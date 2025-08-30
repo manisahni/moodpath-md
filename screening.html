@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodPath MD - Quick Fit Check</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/clinical-warmth.css">
+    <style>
+        /* Screening-specific overrides */
+        body {
+            background: linear-gradient(135deg, var(--cream) 0%, #F3F4F6 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .screening-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--ocean-blue), var(--sage));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            opacity: 0.95;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: rgba(123, 160, 152, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--sage);
+            transition: width 0.3s ease;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .question-container {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-number {
+            color: var(--sage);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .question-text {
+            font-size: 20px;
+            color: var(--ocean-blue);
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 16px 20px;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .option:hover {
+            border-color: var(--sage);
+            background: rgba(123, 160, 152, 0.05);
+        }
+
+        .option.selected {
+            border-color: var(--sage);
+            background: rgba(123, 160, 152, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-item:hover {
+            background: rgba(123, 160, 152, 0.05);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin-top: 2px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: var(--warm-gray);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 10px 12px;
+            border: 1px solid #E5E7EB;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--sage);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--sage);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: #6A8E87;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--warm-gray);
+            border: 2px solid #E5E7EB;
+        }
+
+        .btn-secondary:hover {
+            background: #F9FAFB;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .result-container {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .result-container.active {
+            display: block;
+        }
+
+        .result-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .result-icon.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-green);
+        }
+
+        .result-icon.warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning-yellow);
+        }
+
+        .result-icon.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error-red);
+        }
+
+        .result-title {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--ocean-blue);
+            margin-bottom: 16px;
+        }
+
+        .result-message {
+            color: var(--warm-gray);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .resource-list {
+            background: rgba(123, 160, 152, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .resource-list h3 {
+            color: var(--ocean-blue);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .resource-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-list li {
+            padding: 8px 0;
+            color: var(--warm-gray);
+        }
+
+        .help-text {
+            font-size: 13px;
+            color: var(--warm-gray);
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(123, 160, 152, 0.05);
+            border-radius: 6px;
+        }
+
+        @media (max-width: 640px) {
+            .content {
+                padding: 24px;
+            }
+            
+            .question-text {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="screening-container">
+        <div class="header">
+            <h1>MoodPath MD Fit Check</h1>
+            <p>2 minutes to see if we're right for you</p>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+        
+        <div class="content">
+            <!-- Question 1 -->
+            <div class="question-container active" data-question="1">
+                <div class="question-number">Question 1 of 7</div>
+                <div class="question-text">What brings you here today?</div>
+                <div class="options">
+                    <div class="option" data-value="low_mood">I've been feeling down or low</div>
+                    <div class="option" data-value="anxiety">I'm dealing with worry or anxiety</div>
+                    <div class="option" data-value="both">Both mood and anxiety concerns</div>
+                    <div class="option" data-value="other">Something else</div>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-primary" onclick="nextQuestion()" disabled>Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-container" data-question="2">
+                <div class="question-number">Question 2 of 7</div>
+                <div class="question-text">How long have you been experiencing these feelings?</div>
+                <div class="options">
+                    <div class="option" data-value="recent">Less than 2 weeks</div>
+                    <div class="option" data-value="weeks">2-8 weeks</div>
+                    <div class="option" data-value="months">2-6 months</div>
+                    <div class="option" data-value="chronic">More than 6 months</div>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-secondary" onclick="previousQuestion()">Back</button>
+                    <button class="btn btn-primary" onclick="nextQuestion()" disabled>Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-container" data-question="3">
+                <div class="question-number">Question 3 of 7</div>
+                <div class="question-text">Have you tried treatment before?</div>
+                <div class="options">
+                    <div class="option" data-value="none">No, this would be my first time</div>
+                    <div class="option" data-value="therapy">Yes, therapy/counseling only</div>
+                    <div class="option" data-value="medication">Yes, medication only</div>
+                    <div class="option" data-value="both_treatment">Yes, both therapy and medication</div>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-secondary" onclick="previousQuestion()">Back</button>
+                    <button class="btn btn-primary" onclick="nextQuestion()" disabled>Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-container" data-question="4">
+                <div class="question-number">Question 4 of 7</div>
+                <div class="question-text">Do you have a primary care provider (PCP)?</div>
+                <div class="options">
+                    <div class="option" data-value="yes_pcp">Yes, I have a PCP</div>
+                    <div class="option" data-value="no_pcp">No, I don't have a PCP</div>
+                    <div class="option" data-value="unsure_pcp">I'm not sure / It's been a while</div>
+                </div>
+                <div class="help-text">
+                    Note: We require patients to have a PCP for coordination of care and medical emergencies. We can help you find one if needed.
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-secondary" onclick="previousQuestion()">Back</button>
+                    <button class="btn btn-primary" onclick="nextQuestion()" disabled>Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 5 - Safety Screen -->
+            <div class="question-container" data-question="5">
+                <div class="question-number">Question 5 of 7</div>
+                <div class="question-text">Are you currently experiencing any of the following?</div>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="crisis" value="crisis">
+                        <label for="crisis">Thoughts of hurting myself or others</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="emergency" value="emergency">
+                        <label for="emergency">Need immediate/emergency help</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="severe" value="severe">
+                        <label for="severe">Severe symptoms affecting daily safety</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="none_safety" value="none">
+                        <label for="none_safety">None of the above</label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-secondary" onclick="previousQuestion()">Back</button>
+                    <button class="btn btn-primary" onclick="nextQuestion()" disabled>Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 6 - Complex Conditions -->
+            <div class="question-container" data-question="6">
+                <div class="question-number">Question 6 of 7</div>
+                <div class="question-text">Have you been diagnosed with or experienced any of the following?</div>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bipolar" value="bipolar">
+                        <label for="bipolar">Bipolar disorder</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="psychosis" value="psychosis">
+                        <label for="psychosis">Psychosis or schizophrenia</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="eating" value="eating">
+                        <label for="eating">Active eating disorder</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="substance" value="substance">
+                        <label for="substance">Active substance use disorder</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="none_complex" value="none">
+                        <label for="none_complex">None of the above</label>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-secondary" onclick="previousQuestion()">Back</button>
+                    <button class="btn btn-primary" onclick="nextQuestion()" disabled>Continue</button>
+                </div>
+            </div>
+
+            <!-- Question 7 - Contact Info -->
+            <div class="question-container" data-question="7">
+                <div class="question-number">Question 7 of 7</div>
+                <div class="question-text">Great! You appear to be a good fit. Let's get your information.</div>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" required min="18" max="120" placeholder="25">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State *</label>
+                        <select id="state" required>
+                            <option value="">Select your state</option>
+                            <option value="CA">California</option>
+                            <option value="NY">New York</option>
+                            <option value="TX">Texas</option>
+                            <option value="FL">Florida</option>
+                            <!-- Add all states as needed -->
+                        </select>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-secondary" onclick="previousQuestion()">Back</button>
+                    <button class="btn btn-primary" onclick="submitScreening()">Complete Screening</button>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div class="result-container" id="resultSuccess">
+                <div class="result-icon success">✓</div>
+                <h2 class="result-title">You're a Great Fit!</h2>
+                <p class="result-message">
+                    Based on your responses, MoodPath MD can help support your mental health journey. 
+                    We'll redirect you to complete your registration in just a moment.
+                </p>
+                <button class="btn btn-primary" onclick="proceedToRegistration()">Continue to Registration</button>
+            </div>
+
+            <div class="result-container" id="resultCrisis">
+                <div class="result-icon error">!</div>
+                <h2 class="result-title">Immediate Support Available</h2>
+                <p class="result-message">
+                    Your safety is our top priority. Based on your responses, we recommend immediate support.
+                </p>
+                <div class="resource-list">
+                    <h3>Crisis Resources (Available 24/7):</h3>
+                    <ul>
+                        <li><strong>Crisis Lifeline:</strong> Call or text 988</li>
+                        <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
+                        <li><strong>Emergency:</strong> Call 911 or go to nearest ER</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" onclick="window.location.href='tel:988'">Call 988 Now</button>
+            </div>
+
+            <div class="result-container" id="resultRefer">
+                <div class="result-icon warning">→</div>
+                <h2 class="result-title">Specialized Care Recommended</h2>
+                <p class="result-message">
+                    Based on your responses, we recommend specialized care that can better address your specific needs.
+                </p>
+                <div class="resource-list">
+                    <h3>Recommended Resources:</h3>
+                    <ul>
+                        <li>Ask your PCP for a psychiatry referral</li>
+                        <li>Contact your insurance for in-network specialists</li>
+                        <li>Consider community mental health centers</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" onclick="location.href='/'">Return to Homepage</button>
+            </div>
+
+            <div class="result-container" id="resultNoPCP">
+                <div class="result-icon warning">📋</div>
+                <h2 class="result-title">Primary Care Provider Needed</h2>
+                <p class="result-message">
+                    MoodPath MD requires patients to have a primary care provider for comprehensive care coordination. 
+                    We'd be happy to help once you've established primary care.
+                </p>
+                <div class="resource-list">
+                    <h3>Finding a PCP:</h3>
+                    <ul>
+                        <li>Contact your insurance for in-network providers</li>
+                        <li>Use Zocdoc or similar platforms to find PCPs</li>
+                        <li>Check community health centers in your area</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" onclick="location.href='/'">Return to Homepage</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 7;
+        const responses = {};
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupEventListeners();
+            updateProgressBar();
+        });
+
+        function setupEventListeners() {
+            // Single choice options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+
+            // Checkbox handling
+            document.querySelectorAll('.checkbox-item input').forEach(checkbox => {
+                checkbox.addEventListener('change', handleCheckbox);
+            });
+
+            // Contact form validation
+            document.querySelectorAll('.contact-form input, .contact-form select').forEach(input => {
+                input.addEventListener('input', validateContactForm);
+            });
+        }
+
+        function selectOption(e) {
+            const container = e.target.closest('.question-container');
+            const questionNum = container.dataset.question;
+            
+            // Remove previous selection
+            container.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selection
+            e.target.classList.add('selected');
+            
+            // Store response
+            responses[`q${questionNum}`] = e.target.dataset.value;
+            
+            // Enable continue button
+            container.querySelector('.btn-primary').disabled = false;
+        }
+
+        function handleCheckbox(e) {
+            const container = e.target.closest('.question-container');
+            const questionNum = container.dataset.question;
+            
+            // Handle "none" option exclusivity
+            if (e.target.value === 'none' && e.target.checked) {
+                container.querySelectorAll('input[type="checkbox"]:not(#' + e.target.id + ')').forEach(cb => {
+                    cb.checked = false;
+                });
+            } else if (e.target.value !== 'none' && e.target.checked) {
+                container.querySelector('input[value="none"]').checked = false;
+            }
+            
+            // Store responses
+            const checkedValues = Array.from(container.querySelectorAll('input:checked')).map(cb => cb.value);
+            responses[`q${questionNum}`] = checkedValues;
+            
+            // Enable continue if at least one is checked
+            container.querySelector('.btn-primary').disabled = checkedValues.length === 0;
+        }
+
+        function validateContactForm() {
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+            const state = document.getElementById('state').value;
+            
+            const isValid = email && age && state && email.includes('@');
+            document.querySelector('[data-question="7"] .btn-primary').disabled = !isValid;
+            
+            if (isValid) {
+                responses.q7 = { email, age, state };
+            }
+        }
+
+        function nextQuestion() {
+            // Check for immediate routing conditions
+            if (currentQuestion === 4 && responses.q4 === 'no_pcp') {
+                showResult('noPCP');
+                return;
+            }
+            
+            if (currentQuestion === 5) {
+                const safetyResponses = responses.q5 || [];
+                if (safetyResponses.includes('crisis') || safetyResponses.includes('emergency') || safetyResponses.includes('severe')) {
+                    showResult('crisis');
+                    return;
+                }
+            }
+            
+            if (currentQuestion === 6) {
+                const complexResponses = responses.q6 || [];
+                if (complexResponses.includes('bipolar') || complexResponses.includes('psychosis') || 
+                    complexResponses.includes('eating') || complexResponses.includes('substance')) {
+                    showResult('refer');
+                    return;
+                }
+            }
+            
+            // Move to next question
+            document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+            currentQuestion++;
+            
+            if (currentQuestion <= totalQuestions) {
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+                updateProgressBar();
+            }
+        }
+
+        function previousQuestion() {
+            document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+            currentQuestion--;
+            document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+            updateProgressBar();
+        }
+
+        function updateProgressBar() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function submitScreening() {
+            // Final validation
+            const email = document.getElementById('email').value;
+            const age = parseInt(document.getElementById('age').value);
+            
+            if (age < 18) {
+                alert('MoodPath MD services are currently available for adults 18 and older.');
+                return;
+            }
+            
+            // Store responses and show success
+            sessionStorage.setItem('screening_responses', JSON.stringify(responses));
+            sessionStorage.setItem('screening_passed', 'true');
+            showResult('success');
+        }
+
+        function showResult(type) {
+            // Hide question container
+            document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+            
+            // Show appropriate result
+            document.getElementById('result' + type.charAt(0).toUpperCase() + type.slice(1)).classList.add('active');
+            
+            // Hide progress bar
+            document.querySelector('.progress-bar').style.display = 'none';
+        }
+
+        function proceedToRegistration() {
+            window.location.href = 'screening-to-simplepractice.html';
+        }
+    </script>
+</body>
+</html>

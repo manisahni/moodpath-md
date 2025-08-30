@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodPath MD - Complete Your Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2C5F7C;
+            --sage-green: #7BA098;
+            --coral: #E8A87C;
+            --cream: #FAF9F6;
+            --warm-gray: #6B7280;
+            --success-green: #10B981;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #FAF9F6 0%, #F3F4F6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .redirect-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--sage-green));
+            color: white;
+            padding: 30px;
+        }
+
+        .header h1 {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--success-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 24px;
+        }
+
+        .success-message {
+            font-family: 'Crimson Text', Georgia, serif;
+            color: var(--primary-blue);
+            font-size: 26px;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            color: var(--warm-gray);
+            margin-bottom: 32px;
+            font-size: 16px;
+        }
+
+        .next-steps {
+            background: rgba(123, 160, 152, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            font-family: 'Crimson Text', Georgia, serif;
+            color: var(--sage-green);
+            margin-bottom: 16px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .next-steps ol {
+            margin-left: 20px;
+            color: var(--warm-gray);
+            line-height: 1.8;
+        }
+
+        .next-steps li {
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--sage-green);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #6A9087;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(123, 160, 152, 0.3);
+        }
+
+        .auto-redirect {
+            color: var(--warm-gray);
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(123, 160, 152, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--sage-green);
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .info-box {
+            background: rgba(44, 95, 124, 0.05);
+            border-left: 4px solid var(--primary-blue);
+            padding: 16px;
+            margin: 20px 0;
+            border-radius: 4px;
+            text-align: left;
+        }
+
+        .info-box strong {
+            color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-container">
+        <div class="header">
+            <h1>MoodPath MD</h1>
+        </div>
+        
+        <div class="content">
+            <div class="success-icon">✓</div>
+            
+            <h2 class="success-message">Great news! You're eligible for MoodPath MD</h2>
+            
+            <p class="subtitle">
+                We'll now redirect you to our secure patient portal to complete your registration.
+            </p>
+
+            <div class="next-steps">
+                <h3>What happens next:</h3>
+                <ol>
+                    <li><strong>Create your account</strong> in our HIPAA-secure portal</li>
+                    <li><strong>Complete intake forms</strong> including PHQ-9 assessment (15-20 min)</li>
+                    <li><strong>Submit payment</strong> for your initial consultation ($399)</li>
+                    <li><strong>Receive lab orders</strong> if medically indicated</li>
+                    <li><strong>Schedule your appointment</strong> for a 90-minute video consultation</li>
+                </ol>
+            </div>
+
+            <div class="info-box">
+                <strong>Need your PCP info ready:</strong> You'll need your primary care provider's name and contact information during registration.
+            </div>
+
+            <a href="#" class="btn" id="continueBtn">
+                Continue to Secure Portal →
+            </a>
+
+            <div class="auto-redirect">
+                <span class="loading-spinner"></span>
+                Redirecting in <span id="countdown">10</span> seconds...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration - Replace with your actual SimplePractice/EMR URLs
+        const EMR_CONFIG = {
+            // SimplePractice client portal URL (using demo for testing)
+            portal_url: 'https://www.simplepractice.com/practice-management-software/',
+            
+            // Or if using IntakeQ
+            // portal_url: 'https://intakeq.com/new/your-practice-id',
+            
+            // Or if using custom branded domain
+            // portal_url: 'https://portal.moodpathmd.com',
+        };
+
+        // Check if user passed screening
+        window.addEventListener('load', () => {
+            const screeningPassed = sessionStorage.getItem('screening_passed');
+            if (!screeningPassed) {
+                window.location.href = 'screening.html';
+                return;
+            }
+
+            // Start countdown
+            startRedirectCountdown();
+            
+            // Track successful screening
+            trackConversion();
+        });
+
+        // Manual continue button
+        document.getElementById('continueBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            redirectToPortal();
+        });
+
+        function startRedirectCountdown() {
+            let seconds = 10;
+            const countdownEl = document.getElementById('countdown');
+            
+            const timer = setInterval(() => {
+                seconds--;
+                countdownEl.textContent = seconds;
+                
+                if (seconds <= 0) {
+                    clearInterval(timer);
+                    redirectToPortal();
+                }
+            }, 1000);
+        }
+
+        function redirectToPortal() {
+            // Get screening data to potentially pass along
+            const screeningData = JSON.parse(sessionStorage.getItem('screening_responses') || '{}');
+            
+            // Build portal URL with any needed parameters
+            let portalUrl = EMR_CONFIG.portal_url;
+            
+            // If SimplePractice supports pre-filling, add parameters
+            // This varies by EMR system
+            if (screeningData.q7?.email) {
+                // Some systems accept email as parameter
+                portalUrl += `?email=${encodeURIComponent(screeningData.q7.email)}`;
+            }
+            
+            // Clear screening data from session
+            sessionStorage.removeItem('screening_passed');
+            sessionStorage.removeItem('screening_responses');
+            
+            // Redirect to EMR portal
+            window.location.href = portalUrl;
+        }
+
+        function trackConversion() {
+            // Track successful screening to registration
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'begin_registration', {
+                    'event_category': 'engagement',
+                    'event_label': 'screening_passed'
+                });
+            }
+            
+            // Also send to your backend for analytics
+            fetch('/api/analytics/conversion', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    event: 'screening_to_registration',
+                    timestamp: new Date().toISOString(),
+                    source: 'screening'
+                })
+            }).catch(err => console.log('Analytics error:', err));
+        }
+    </script>
+</body>
+</html>

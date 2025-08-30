@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodPath MD - Complete Your Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2C5F7C;
+            --sage-green: #7BA098;
+            --coral: #E8A87C;
+            --cream: #FAF9F6;
+            --warm-gray: #6B7280;
+            --error-red: #EF4444;
+            --success-green: #10B981;
+            --border-color: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #FAF9F6 0%, #F3F4F6 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .registration-header {
+            background: white;
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .step-indicator {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .step {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .step.completed {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .step.active {
+            background: var(--sage-green);
+            color: white;
+        }
+
+        .step.pending {
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--warm-gray);
+        }
+
+        .step-line {
+            width: 40px;
+            height: 2px;
+            background: var(--border-color);
+            transition: background 0.3s ease;
+        }
+
+        .step-line.completed {
+            background: var(--success-green);
+        }
+
+        .registration-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .registration-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--sage-green));
+            color: white;
+            padding: 30px;
+        }
+
+        .card-header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .card-header p {
+            opacity: 0.95;
+            font-size: 16px;
+        }
+
+        .card-body {
+            padding: 40px;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-blue);
+            font-size: 14px;
+        }
+
+        .required {
+            color: var(--error-red);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--sage-green);
+            box-shadow: 0 0 0 3px rgba(123, 160, 152, 0.1);
+        }
+
+        .form-input.error {
+            border-color: var(--error-red);
+        }
+
+        .error-message {
+            color: var(--error-red);
+            font-size: 13px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .form-checkbox input {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .form-checkbox label {
+            cursor: pointer;
+            color: var(--warm-gray);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .form-checkbox a {
+            color: var(--sage-green);
+            text-decoration: none;
+        }
+
+        .form-checkbox a:hover {
+            text-decoration: underline;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background: var(--sage-green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #6A9087;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(123, 160, 152, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--warm-gray);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--warm-gray);
+            background: rgba(107, 114, 128, 0.05);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-banner {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--success-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .success-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--success-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .info-box {
+            background: rgba(44, 95, 124, 0.05);
+            border-left: 4px solid var(--primary-blue);
+            padding: 16px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .info-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .info-box p {
+            color: var(--warm-gray);
+            font-size: 14px;
+        }
+
+        .insurance-upload {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .insurance-upload:hover {
+            border-color: var(--sage-green);
+            background: rgba(123, 160, 152, 0.05);
+        }
+
+        .insurance-upload.has-file {
+            border-style: solid;
+            border-color: var(--success-green);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: var(--warm-gray);
+            margin-bottom: 12px;
+        }
+
+        .upload-text {
+            color: var(--warm-gray);
+            font-size: 14px;
+        }
+
+        .file-name {
+            color: var(--success-green);
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .payment-method {
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .payment-method:hover {
+            border-color: var(--sage-green);
+        }
+
+        .payment-method.selected {
+            border-color: var(--sage-green);
+            background: rgba(123, 160, 152, 0.1);
+        }
+
+        .payment-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .payment-label {
+            font-size: 14px;
+            color: var(--warm-gray);
+        }
+
+        .price-summary {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            color: var(--warm-gray);
+        }
+
+        .price-row.total {
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--primary-blue);
+            padding-top: 12px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: var(--warm-gray);
+            font-size: 13px;
+        }
+
+        .security-badge svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .card-body {
+                padding: 24px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .step-indicator {
+                display: none;
+            }
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header class="registration-header">
+        <div class="header-content">
+            <div class="logo">
+                <svg width="36" height="36" viewBox="0 0 40 40">
+                    <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F7C" stroke-width="1.5"/>
+                    <path d="M20 10 Q25 20, 20 30 Q15 20, 20 10" fill="#7BA098" opacity="0.3"/>
+                    <circle cx="20" cy="20" r="3" fill="#2C5F7C"/>
+                </svg>
+                MoodPath MD
+            </div>
+            <div class="step-indicator">
+                <div class="step active" id="step1">1</div>
+                <div class="step-line" id="line1"></div>
+                <div class="step pending" id="step2">2</div>
+                <div class="step-line" id="line2"></div>
+                <div class="step pending" id="step3">3</div>
+                <div class="step-line" id="line3"></div>
+                <div class="step pending" id="step4">4</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="registration-container">
+        <div class="registration-card">
+            <div class="card-header">
+                <h1 id="section-title">Create Your Account</h1>
+                <p id="section-subtitle">Let's get you started on your path to better mental health</p>
+            </div>
+
+            <div class="card-body">
+                <!-- Success Banner (shown after screening) -->
+                <div class="success-banner" id="screening-success">
+                    <div class="success-icon">✓</div>
+                    <div>
+                        <strong>Great news!</strong> You've passed our eligibility screening.
+                        Let's complete your registration in just a few steps.
+                    </div>
+                </div>
+
+                <!-- Step 1: Account Creation -->
+                <form class="form-section active" id="section1">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="firstName">
+                                First Name <span class="required">*</span>
+                            </label>
+                            <input type="text" id="firstName" class="form-input" required>
+                            <div class="error-message">Please enter your first name</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="lastName">
+                                Last Name <span class="required">*</span>
+                            </label>
+                            <input type="text" id="lastName" class="form-input" required>
+                            <div class="error-message">Please enter your last name</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">
+                            Email Address <span class="required">*</span>
+                        </label>
+                        <input type="email" id="email" class="form-input" required>
+                        <div class="error-message">Please enter a valid email address</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="phone">
+                            Phone Number <span class="required">*</span>
+                        </label>
+                        <input type="tel" id="phone" class="form-input" placeholder="(555) 123-4567" required>
+                        <div class="error-message">Please enter a valid phone number</div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="password">
+                                Password <span class="required">*</span>
+                            </label>
+                            <input type="password" id="password" class="form-input" required>
+                            <div class="error-message">Password must be at least 8 characters</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="confirmPassword">
+                                Confirm Password <span class="required">*</span>
+                            </label>
+                            <input type="password" id="confirmPassword" class="form-input" required>
+                            <div class="error-message">Passwords do not match</div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="dob">
+                                Date of Birth <span class="required">*</span>
+                            </label>
+                            <input type="date" id="dob" class="form-input" required>
+                            <div class="error-message">Please enter your date of birth</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="gender">
+                                Gender
+                            </label>
+                            <select id="gender" class="form-input">
+                                <option value="">Prefer not to say</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-primary" onclick="nextSection(1)">
+                            Continue to Medical Info
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Step 2: Medical Information -->
+                <form class="form-section" id="section2">
+                    <h2 style="margin-bottom: 24px; color: var(--primary-blue);">Medical Information</h2>
+                    
+                    <div class="info-box">
+                        <h3>Primary Care Provider Required</h3>
+                        <p>All patients must have a PCP for general medical care. We'll coordinate with them as needed.</p>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="pcpName">
+                                PCP Name <span class="required">*</span>
+                            </label>
+                            <input type="text" id="pcpName" class="form-input" placeholder="Dr. Jane Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="pcpPhone">
+                                PCP Phone Number <span class="required">*</span>
+                            </label>
+                            <input type="tel" id="pcpPhone" class="form-input" placeholder="(555) 123-4567" required>
+                        </div>
+                    </div>
+
+                    <h3 style="margin: 24px 0 16px; color: var(--primary-blue);">Emergency Contact</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="emergencyName">
+                                Contact Name <span class="required">*</span>
+                            </label>
+                            <input type="text" id="emergencyName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="emergencyPhone">
+                                Contact Phone <span class="required">*</span>
+                            </label>
+                            <input type="tel" id="emergencyPhone" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="emergencyRelation">
+                            Relationship <span class="required">*</span>
+                        </label>
+                        <select id="emergencyRelation" class="form-input" required>
+                            <option value="">Select relationship</option>
+                            <option value="spouse">Spouse/Partner</option>
+                            <option value="parent">Parent</option>
+                            <option value="child">Adult Child</option>
+                            <option value="sibling">Sibling</option>
+                            <option value="friend">Friend</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <h3 style="margin: 24px 0 16px; color: var(--primary-blue);">Insurance (Optional)</h3>
+                    <p style="color: var(--warm-gray); margin-bottom: 16px;">
+                        We're out-of-network but provide superbills for reimbursement.
+                    </p>
+
+                    <div class="insurance-upload" onclick="document.getElementById('insuranceFile').click()">
+                        <div class="upload-icon">📋</div>
+                        <div class="upload-text">Click to upload insurance card (front & back)</div>
+                        <div class="file-name" id="fileName" style="display: none;"></div>
+                        <input type="file" id="insuranceFile" style="display: none;" accept="image/*,.pdf" multiple>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="previousSection(2)">
+                            Back
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextSection(2)">
+                            Continue to Consent
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Step 3: Consent & Agreements -->
+                <form class="form-section" id="section3">
+                    <h2 style="margin-bottom: 24px; color: var(--primary-blue);">Consent & Agreements</h2>
+                    
+                    <div class="info-box">
+                        <h3>Please review and consent to the following:</h3>
+                        <p>These agreements ensure safe, compliant telehealth treatment.</p>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="consentTelehealth" required>
+                        <label for="consentTelehealth">
+                            I consent to receiving medical care via telehealth and understand its limitations.
+                            <a href="/consent/telehealth" target="_blank">View full consent</a>
+                        </label>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="consentTreatment" required>
+                        <label for="consentTreatment">
+                            I consent to treatment for mood disorders and understand the risks and benefits.
+                            <a href="/consent/treatment" target="_blank">View treatment consent</a>
+                        </label>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="consentPrivacy" required>
+                        <label for="consentPrivacy">
+                            I have read and agree to the HIPAA Privacy Notice.
+                            <a href="/privacy" target="_blank">View privacy notice</a>
+                        </label>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="consentBilling" required>
+                        <label for="consentBilling">
+                            I understand this is a cash-pay service and agree to the payment terms.
+                            <a href="/billing" target="_blank">View billing agreement</a>
+                        </label>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="consentPCP" required>
+                        <label for="consentPCP">
+                            I confirm I have a primary care provider and consent to care coordination.
+                        </label>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="consentLabs" required>
+                        <label for="consentLabs">
+                            I agree to complete required lab work if medically indicated.
+                        </label>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 24px;">
+                        <label class="form-label" for="signature">
+                            Electronic Signature <span class="required">*</span>
+                        </label>
+                        <input type="text" id="signature" class="form-input" placeholder="Type your full name" required>
+                        <div class="error-message">Please type your full name as signature</div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="previousSection(3)">
+                            Back
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextSection(3)">
+                            Continue to Payment
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Step 4: Payment -->
+                <form class="form-section" id="section4">
+                    <h2 style="margin-bottom: 24px; color: var(--primary-blue);">Secure Payment</h2>
+                    
+                    <div class="price-summary">
+                        <div class="price-row">
+                            <span>Initial Consultation (90 minutes)</span>
+                            <span>$399.00</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Lab Order Processing</span>
+                            <span>Included</span>
+                        </div>
+                        <div class="price-row total">
+                            <span>Total Due Today</span>
+                            <span>$399.00</span>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-bottom: 16px; color: var(--primary-blue);">Payment Method</h3>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method selected" onclick="selectPayment('card')">
+                            <div class="payment-icon">💳</div>
+                            <div class="payment-label">Credit/Debit Card</div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment('hsa')">
+                            <div class="payment-icon">🏥</div>
+                            <div class="payment-label">HSA/FSA Card</div>
+                        </div>
+                        <div class="payment-method" onclick="selectPayment('ach')">
+                            <div class="payment-icon">🏦</div>
+                            <div class="payment-label">Bank Transfer</div>
+                        </div>
+                    </div>
+
+                    <!-- Stripe Card Element Container -->
+                    <div id="card-element" style="margin: 24px 0;">
+                        <!-- This would be replaced by actual Stripe Elements -->
+                        <div style="border: 2px solid var(--border-color); border-radius: 8px; padding: 16px;">
+                            <input type="text" class="form-input" placeholder="Card number" style="border: none; padding: 8px 0;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
+                                <input type="text" class="form-input" placeholder="MM/YY" style="border: none; padding: 8px 0;">
+                                <input type="text" class="form-input" placeholder="CVC" style="border: none; padding: 8px 0;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="saveCard">
+                        <label for="saveCard">
+                            Save this card for future payments and membership
+                        </label>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>After Payment:</h3>
+                        <p>• You'll receive lab orders via email (if needed)</p>
+                        <p>• Complete intake forms (15-20 minutes)</p>
+                        <p>• Schedule your 90-minute consultation</p>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" onclick="previousSection(4)">
+                            Back
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="processPayment()" id="payButton">
+                            Complete Registration & Pay $399
+                        </button>
+                    </div>
+
+                    <div class="security-badge">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                        </svg>
+                        Secure, encrypted payment processed by Stripe
+                    </div>
+                </form>
+
+                <!-- Success Screen -->
+                <div class="form-section" id="success-screen">
+                    <div style="text-align: center; padding: 40px 0;">
+                        <div style="width: 80px; height: 80px; background: var(--success-green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 24px;">
+                            ✓
+                        </div>
+                        <h2 style="color: var(--primary-blue); margin-bottom: 16px;">Welcome to MoodPath MD!</h2>
+                        <p style="color: var(--warm-gray); margin-bottom: 32px;">
+                            Your registration is complete. Check your email for next steps.
+                        </p>
+                        
+                        <div class="info-box" style="text-align: left; max-width: 500px; margin: 0 auto;">
+                            <h3>What happens next:</h3>
+                            <ol style="margin-left: 20px; color: var(--warm-gray);">
+                                <li>Check your email for lab order instructions</li>
+                                <li>Complete your medical intake forms (link in email)</li>
+                                <li>Schedule your initial consultation</li>
+                                <li>Complete labs before your appointment</li>
+                            </ol>
+                        </div>
+                        
+                        <div style="margin-top: 32px;">
+                            <button class="btn btn-primary" onclick="window.location.href='/patient-portal'">
+                                Go to Patient Portal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if user passed screening
+        window.addEventListener('load', () => {
+            const screeningPassed = sessionStorage.getItem('screening_passed');
+            if (!screeningPassed) {
+                // Redirect to screening if they haven't passed
+                window.location.href = '/screening';
+            }
+            
+            // Pre-fill email if available from screening
+            const responses = JSON.parse(sessionStorage.getItem('screening_responses') || '{}');
+            if (responses.q6?.email) {
+                document.getElementById('email').value = responses.q6.email;
+            }
+        });
+
+        let currentSection = 1;
+        const totalSections = 4;
+
+        function updateStepIndicator() {
+            for (let i = 1; i <= totalSections; i++) {
+                const step = document.getElementById(`step${i}`);
+                const line = document.getElementById(`line${i}`);
+                
+                if (i < currentSection) {
+                    step.classList.remove('active', 'pending');
+                    step.classList.add('completed');
+                    step.innerHTML = '✓';
+                    if (line) line.classList.add('completed');
+                } else if (i === currentSection) {
+                    step.classList.remove('completed', 'pending');
+                    step.classList.add('active');
+                    step.innerHTML = i;
+                    if (line) line.classList.remove('completed');
+                } else {
+                    step.classList.remove('completed', 'active');
+                    step.classList.add('pending');
+                    step.innerHTML = i;
+                    if (line) line.classList.remove('completed');
+                }
+            }
+        }
+
+        function updateSectionHeader() {
+            const titles = [
+                'Create Your Account',
+                'Medical Information',
+                'Consent & Agreements',
+                'Secure Payment'
+            ];
+            
+            const subtitles = [
+                "Let's get you started on your path to better mental health",
+                'Help us coordinate your care safely',
+                'Review and accept our treatment agreements',
+                'Complete your registration with secure payment'
+            ];
+            
+            document.getElementById('section-title').textContent = titles[currentSection - 1];
+            document.getElementById('section-subtitle').textContent = subtitles[currentSection - 1];
+        }
+
+        function validateSection(sectionNum) {
+            const section = document.getElementById(`section${sectionNum}`);
+            const requiredInputs = section.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredInputs.forEach(input => {
+                if (input.type === 'checkbox') {
+                    if (!input.checked) {
+                        isValid = false;
+                    }
+                } else {
+                    if (!input.value.trim()) {
+                        input.classList.add('error');
+                        const errorMsg = input.parentElement.querySelector('.error-message');
+                        if (errorMsg) errorMsg.classList.add('show');
+                        isValid = false;
+                    } else {
+                        input.classList.remove('error');
+                        const errorMsg = input.parentElement.querySelector('.error-message');
+                        if (errorMsg) errorMsg.classList.remove('show');
+                    }
+                }
+            });
+            
+            // Special validations
+            if (sectionNum === 1) {
+                // Validate email
+                const email = document.getElementById('email');
+                if (email.value && !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    email.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Validate password match
+                const password = document.getElementById('password');
+                const confirmPassword = document.getElementById('confirmPassword');
+                if (password.value !== confirmPassword.value) {
+                    confirmPassword.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Validate password length
+                if (password.value.length < 8) {
+                    password.classList.add('error');
+                    isValid = false;
+                }
+            }
+            
+            return isValid;
+        }
+
+        function nextSection(sectionNum) {
+            if (!validateSection(sectionNum)) {
+                return;
+            }
+            
+            // Save form data
+            saveFormData(sectionNum);
+            
+            // Hide current section
+            document.getElementById(`section${sectionNum}`).classList.remove('active');
+            
+            // Show next section
+            currentSection = sectionNum + 1;
+            document.getElementById(`section${currentSection}`).classList.add('active');
+            
+            // Update UI
+            updateStepIndicator();
+            updateSectionHeader();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function previousSection(sectionNum) {
+            // Hide current section
+            document.getElementById(`section${sectionNum}`).classList.remove('active');
+            
+            // Show previous section
+            currentSection = sectionNum - 1;
+            document.getElementById(`section${currentSection}`).classList.add('active');
+            
+            // Update UI
+            updateStepIndicator();
+            updateSectionHeader();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function saveFormData(sectionNum) {
+            const formData = JSON.parse(localStorage.getItem('registrationData') || '{}');
+            const section = document.getElementById(`section${sectionNum}`);
+            const inputs = section.querySelectorAll('input, select');
+            
+            inputs.forEach(input => {
+                if (input.type === 'checkbox') {
+                    formData[input.id] = input.checked;
+                } else {
+                    formData[input.id] = input.value;
+                }
+            });
+            
+            localStorage.setItem('registrationData', JSON.stringify(formData));
+        }
+
+        function selectPayment(method) {
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+        }
+
+        async function processPayment() {
+            const payButton = document.getElementById('payButton');
+            payButton.disabled = true;
+            payButton.innerHTML = '<span class="loading-spinner"></span> Processing...';
+            
+            // Collect all form data
+            const formData = JSON.parse(localStorage.getItem('registrationData') || '{}');
+            
+            try {
+                // Create payment intent
+                const response = await fetch('/api/payments/create-intent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        amount: 39900, // $399 in cents
+                        ...formData
+                    })
+                });
+                
+                if (response.ok) {
+                    // In real implementation, this would use Stripe.js to confirm payment
+                    // For now, simulate success
+                    setTimeout(() => {
+                        showSuccessScreen();
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error('Payment failed:', error);
+                payButton.disabled = false;
+                payButton.innerHTML = 'Complete Registration & Pay $399';
+                alert('Payment processing failed. Please try again.');
+            }
+        }
+
+        function showSuccessScreen() {
+            // Hide all sections
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show success screen
+            document.getElementById('success-screen').classList.add('active');
+            
+            // Update step indicator
+            for (let i = 1; i <= totalSections; i++) {
+                document.getElementById(`step${i}`).classList.remove('active', 'pending');
+                document.getElementById(`step${i}`).classList.add('completed');
+                document.getElementById(`step${i}`).innerHTML = '✓';
+            }
+            
+            // Clear stored data
+            localStorage.removeItem('registrationData');
+            sessionStorage.removeItem('screening_passed');
+            sessionStorage.removeItem('screening_responses');
+            
+            // Send confirmation email (would be handled by backend)
+            sendConfirmationEmail();
+        }
+
+        async function sendConfirmationEmail() {
+            const formData = JSON.parse(localStorage.getItem('registrationData') || '{}');
+            
+            try {
+                await fetch('/api/emails/welcome', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: formData.email,
+                        firstName: formData.firstName
+                    })
+                });
+            } catch (error) {
+                console.error('Failed to send welcome email:', error);
+            }
+        }
+
+        // Handle insurance file upload
+        document.getElementById('insuranceFile').addEventListener('change', function(e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                const fileNames = Array.from(files).map(f => f.name).join(', ');
+                document.getElementById('fileName').textContent = fileNames;
+                document.getElementById('fileName').style.display = 'block';
+                document.querySelector('.insurance-upload').classList.add('has-file');
+            }
+        });
+
+        // Phone number formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 3) {
+                    value = `(${value}`;
+                } else if (value.length <= 6) {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+                } else {
+                    value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                }
+            }
+            e.target.value = value;
+        });
+
+        // Similar formatting for PCP phone and emergency phone
+        ['pcpPhone', 'emergencyPhone'].forEach(id => {
+            document.getElementById(id).addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 0) {
+                    if (value.length <= 3) {
+                        value = `(${value}`;
+                    } else if (value.length <= 6) {
+                        value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+                    } else {
+                        value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+                    }
+                }
+                e.target.value = value;
+            });
+        });
+
+        // Initialize
+        updateStepIndicator();
+    </script>
+
+    <!-- Stripe.js would be loaded here in production -->
+    <!-- <script src="https://js.stripe.com/v3/"></script> -->
+</body>
+</html>

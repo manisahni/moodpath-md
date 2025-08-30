@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodPath MD - Care for Low Mood Without the Waiting Room</title>
+    <link rel="stylesheet" href="css/clinical-warmth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <svg width="36" height="36" viewBox="0 0 40 40">
+                            <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F7C" stroke-width="1.5"/>
+                            <path d="M20 10 Q25 20, 20 30 Q15 20, 20 10" fill="#7BA098" opacity="0.3"/>
+                            <circle cx="20" cy="20" r="3" fill="#2C5F7C"/>
+                        </svg>
+                        <span class="logo-text">MoodPath MD</span>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="#approach">Our Approach</a></li>
+                        <li><a href="#process">How It Works</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#about">About Dr. Sahni</a></li>
+                        <li><a href="#fit-check" class="btn btn-primary">Start Fit Check</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Care for low mood—without the waiting room.</h1>
+                    <p class="subtitle">
+                        Thoughtful treatment guided by medical expertise and genetics—so you get to the right medication faster, 
+                        without endless trial-and-error or repeated visits.
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                        <button class="btn btn-primary" style="font-size: 1.1rem; padding: 16px 32px;" onclick="location.href='#fit-check'">
+                            Start Your 2-Minute Fit Check
+                        </button>
+                        <button class="btn btn-secondary" onclick="location.href='#approach'">
+                            How Our Approach Works
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Bar -->
+        <section style="background: white; padding: 1.5rem 0; border-bottom: 1px solid rgba(44, 95, 124, 0.08);">
+            <div class="container">
+                <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; font-size: 0.9375rem; color: var(--warm-gray);">
+                    <span>✓ Board-Certified Internist</span>
+                    <span>✓ Focused on Mood Care</span>
+                    <span>✓ Genetic-Guided Treatment</span>
+                    <span>✓ Flexible Scheduling</span>
+                    <span>✓ HIPAA-Compliant Telehealth</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fit Check Section -->
+        <section id="fit-check" style="padding: 5rem 0; background: var(--cream);">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="text-align: center;">Is MoodPath MD right for you?</h2>
+                    <p style="text-align: center; font-size: 1.125rem; margin-bottom: 3rem;">
+                        Before starting, we do a brief fit check. This helps us ensure we're the right service for your needs.
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div class="card" style="border-left: 4px solid var(--sage);">
+                            <h3 style="color: var(--sage-dark); margin-bottom: 1.5rem;">We're a good fit if:</h3>
+                            <ul style="list-style: none; line-height: 2;">
+                                <li>✓ You're struggling with low mood, dysthymia, or depression</li>
+                                <li>✓ You already have a <strong>primary care provider (PCP)</strong> for your general health</li>
+                                <li>✓ Your medical conditions are currently stable</li>
+                                <li>✓ You're willing to complete labs if recommended</li>
+                                <li>✓ You understand this is premium, out-of-network care</li>
+                                <li>✓ You're comfortable with secure telehealth visits</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card" style="border-left: 4px solid var(--coral);">
+                            <h3 style="color: var(--coral-dark); margin-bottom: 1.5rem;">We're not the right fit if:</h3>
+                            <ul style="list-style: none; line-height: 2;">
+                                <li>✗ You're in crisis or having suicidal thoughts (please call 988)</li>
+                                <li>✗ You need care for bipolar disorder, schizophrenia, or addiction</li>
+                                <li>✗ You're looking for controlled medications (e.g., Xanax, Adderall)</li>
+                                <li>✗ You don't have a primary care provider</li>
+                                <li>✗ You need immediate/emergency care</li>
+                                <li>✗ You're seeking therapy-only treatment</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <button class="btn btn-primary" style="font-size: 1.1rem; padding: 16px 40px;">
+                            Take the 2-Minute Fit Check →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem (Empathy) -->
+        <section style="padding: 5rem 0; background: white;">
+            <div class="container">
+                <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+                    <h2>When low mood persists, even after doing everything right.</h2>
+                    <p style="font-size: 1.125rem; line-height: 1.9; color: var(--warm-gray);">
+                        You may have tried lifestyle changes, therapy, or even medication, but the results didn't last. 
+                        Fatigue, stress, and low mood linger. It's not about willpower. You deserve care that looks at 
+                        the full picture—and fits your life without endless office visits.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Approach -->
+        <section id="approach" style="padding: 5rem 0; background: var(--gradient-subtle);">
+            <div class="container">
+                <h2 style="text-align: center;">Mood care that fits your health and your life.</h2>
+                <p style="text-align: center; max-width: 820px; margin: 0 auto 3rem; font-size: 1.125rem;">
+                    Mild to moderate depression is often first evaluated and treated by internists and primary care physicians. 
+                    That's standard practice. We expand on this foundation by providing extra time, thorough medical workups, 
+                    and genetic testing—tools most PCP visits can't offer. This lets us personalize treatment, reduce 
+                    trial-and-error, and deliver care that fits your life.
+                </p>
+                
+                <div class="steps-container" style="max-width: 800px; margin: 0 auto;">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Comprehensive Evaluation</h3>
+                            <p>90-minute consult to understand your symptoms, medical history, and goals.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Medical Foundation (Targeted)</h3>
+                            <p>Labs and EKG if needed, coordinated with your PCP.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Genetic Testing (Optional)</h3>
+                            <p>Helps identify which antidepressants may work best for you, reducing trial-and-error.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Personalized Plan</h3>
+                            <p>Treatment tailored to your health, your lifestyle, and your schedule.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-subtle">Learn about our approach →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section id="process" style="padding: 5rem 0; background: white;">
+            <div class="container">
+                <h2 style="text-align: center;">A clear, supportive path forward.</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                    <div style="text-align: center;">
+                        <div class="feature-icon" style="background: var(--ocean-blue-muted); color: var(--ocean-blue);">1</div>
+                        <h4 style="margin: 1rem 0 0.5rem;">Quick Fit Check</h4>
+                        <p style="font-size: 0.9375rem;">2-minute check to confirm we're the right fit</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="feature-icon" style="background: var(--ocean-blue-muted); color: var(--ocean-blue);">2</div>
+                        <h4 style="margin: 1rem 0 0.5rem;">Medical Foundation</h4>
+                        <p style="font-size: 0.9375rem;">Targeted labs/EKG if indicated</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="feature-icon" style="background: var(--ocean-blue-muted); color: var(--ocean-blue);">3</div>
+                        <h4 style="margin: 1rem 0 0.5rem;">Initial Visit</h4>
+                        <p style="font-size: 0.9375rem;">90-min in-depth review</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="feature-icon" style="background: var(--sage-muted); color: var(--sage);">4</div>
+                        <h4 style="margin: 1rem 0 0.5rem;">Genetic Testing</h4>
+                        <p style="font-size: 0.9375rem;">Optional cheek swab</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="feature-icon" style="background: var(--sage-muted); color: var(--sage);">5</div>
+                        <h4 style="margin: 1rem 0 0.5rem;">Treatment Plan</h4>
+                        <p style="font-size: 0.9375rem;">Data-based selection</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="feature-icon" style="background: var(--sage-muted); color: var(--sage);">6</div>
+                        <h4 style="margin: 1rem 0 0.5rem;">Ongoing Care</h4>
+                        <p style="font-size: 0.9375rem;">Regular telehealth check-ins</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results -->
+        <section style="padding: 5rem 0; background: var(--cream);">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="text-align: center;">When mood care fits your life, change feels easier.</h2>
+                    
+                    <div style="margin: 3rem 0;">
+                        <div style="display: grid; gap: 1.5rem;">
+                            <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                                <span style="color: var(--sage); font-weight: 600; min-width: 120px;">Early:</span>
+                                <p style="margin: 0;">Fewer side effects, smoother adjustment</p>
+                            </div>
+                            <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                                <span style="color: var(--sage); font-weight: 600; min-width: 120px;">Weeks 3-6:</span>
+                                <p style="margin: 0;">Better sleep, clearer focus, more energy</p>
+                            </div>
+                            <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                                <span style="color: var(--sage); font-weight: 600; min-width: 120px;">Months 2-3:</span>
+                                <p style="margin: 0;">Motivation rebuilds, mood stabilizes</p>
+                            </div>
+                            <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                                <span style="color: var(--sage); font-weight: 600; min-width: 120px;">Beyond:</span>
+                                <p style="margin: 0;">Sustainable wellness that supports work and life</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial" style="margin-top: 3rem;">
+                        <p class="testimonial-text">
+                            "I felt understood, and my treatment made sense. The plan worked without all the back-and-forth visits I had before."
+                        </p>
+                        <p class="testimonial-author">— Patient</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment/Pricing -->
+        <section id="pricing" style="padding: 5rem 0; background: white;">
+            <div class="container">
+                <h2 style="text-align: center;">Clear pricing, convenient care.</h2>
+                
+                <div class="pricing-grid" style="max-width: 900px; margin: 3rem auto;">
+                    <div class="pricing-card">
+                        <h3>Initial Visit</h3>
+                        <div class="price">$399</div>
+                        <p class="price-label">90-minute comprehensive evaluation</p>
+                        <ul style="text-align: left; list-style: none; margin: 1.5rem 0; color: var(--warm-gray);">
+                            <li style="padding: 0.5rem 0;">• Complete medical & mood history</li>
+                            <li style="padding: 0.5rem 0;">• Medication review</li>
+                            <li style="padding: 0.5rem 0;">• Treatment planning</li>
+                            <li style="padding: 0.5rem 0;">• Personalized recommendations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <h3>Genetic Testing</h3>
+                        <div class="price">$399</div>
+                        <p class="price-label">Optional but valuable</p>
+                        <ul style="text-align: left; list-style: none; margin: 1.5rem 0; color: var(--warm-gray);">
+                            <li style="padding: 0.5rem 0;">• One-time cheek swab</li>
+                            <li style="padding: 0.5rem 0;">• Lifelong value</li>
+                            <li style="padding: 0.5rem 0;">• Medication guidance</li>
+                            <li style="padding: 0.5rem 0;">• Reduces trial-and-error</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-card card-premium">
+                        <span class="badge">Best Value</span>
+                        <h3>Monthly Membership</h3>
+                        <div class="price">$149</div>
+                        <p class="price-label">Ongoing support</p>
+                        <ul style="text-align: left; list-style: none; margin: 1.5rem 0; color: var(--warm-gray);">
+                            <li style="padding: 0.5rem 0;">• Regular check-ins</li>
+                            <li style="padding: 0.5rem 0;">• Medication management</li>
+                            <li style="padding: 0.5rem 0;">• Flexible scheduling</li>
+                            <li style="padding: 0.5rem 0;">• Continuous support</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="font-size: 1.125rem; margin-bottom: 1rem;">
+                        <strong>Labs/EKG:</strong> Usually through your PCP or covered by insurance
+                    </p>
+                    <p style="color: var(--warm-gray);">
+                        <strong>Why this model:</strong> Care designed to reduce unnecessary visits and trial-and-error, saving time and frustration.
+                    </p>
+                    <button class="btn btn-primary" style="margin-top: 2rem;">Check your eligibility →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who We Serve -->
+        <section style="padding: 5rem 0; background: var(--gradient-subtle);">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <h2>Care for people experiencing low mood or depression.</h2>
+                    
+                    <div class="card" style="margin: 3rem 0; text-align: left;">
+                        <h3 style="color: var(--ocean-blue); margin-bottom: 1.5rem;">A good fit if you:</h3>
+                        <ul style="list-style: none; line-height: 2;">
+                            <li>• Experience depressed mood, dysthymia, or persistent low mood</li>
+                            <li>• Already have a <strong>PCP for your general medical care</strong></li>
+                            <li>• Want efficient, personalized treatment without repeated waiting room visits</li>
+                            <li>• Value safe, evidence-based use of labs and genetics to guide care</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="font-size: 1.125rem; line-height: 1.8;">
+                        <strong>We refer when:</strong> Bipolar disorder, schizophrenia, suicidality, or complex 
+                        psychiatric/social concerns are present. If so, we'll guide you toward the right level of care.
+                    </p>
+                    
+                    <button class="btn btn-subtle" style="margin-top: 2rem;">Take the fit check →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Science -->
+        <section style="padding: 5rem 0; background: white;">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="text-align: center;">Using genetics and labs to guide mood treatment.</h2>
+                    
+                    <p style="font-size: 1.125rem; line-height: 1.9; text-align: center; margin-bottom: 2rem;">
+                        Not all antidepressants work the same for everyone. Genetics help explain why.
+                    </p>
+                    
+                    <p style="line-height: 1.9;">
+                        By testing for key variants, we can often predict which medications may be more effective 
+                        or better tolerated—helping you get to the right treatment faster.
+                    </p>
+                    
+                    <p style="line-height: 1.9;">
+                        Labs also check for thyroid, vitamin, or other medical issues that can mimic depression. 
+                        Together, these tools reduce uncertainty and help us avoid unnecessary trial-and-error.
+                    </p>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="btn btn-secondary">Learn about genetic testing →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Medical Standards -->
+        <section style="padding: 5rem 0; background: var(--cream);">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="text-align: center;">Safe, thorough care—without unnecessary steps.</h2>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 3rem 0;">
+                        <div>
+                            <h4 style="color: var(--ocean-blue); margin-bottom: 1rem;">What we do:</h4>
+                            <ul style="line-height: 2; color: var(--warm-gray);">
+                                <li>• Targeted labs and EKG when needed</li>
+                                <li>• Careful review of all medications</li>
+                                <li>• Depression scales (PHQ-9) to track progress</li>
+                                <li>• Coordination with your PCP</li>
+                                <li>• Safety checks integrated into care</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: var(--ocean-blue); margin-bottom: 1rem;">Our boundaries:</h4>
+                            <p style="line-height: 1.9; color: var(--warm-gray);">
+                                We focus on low mood and depression in people with stable histories. 
+                                We are not a crisis service and refer out for complex psychiatric care.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button class="btn btn-subtle">Review our standards →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Getting Started -->
+        <section style="padding: 5rem 0; background: var(--gradient-primary); color: white;">
+            <div class="container">
+                <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+                    <h2 style="color: white;">Three simple steps to better mood care.</h2>
+                    
+                    <div style="display: flex; justify-content: center; gap: 3rem; margin: 3rem 0;">
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;">1</div>
+                            <p>Quick Fit Check<br>(2 minutes)</p>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;">2</div>
+                            <p>Medical Foundation<br>(if needed)</p>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;">3</div>
+                            <p>Initial Visit<br>(90 minutes)</p>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 1.125rem; margin-bottom: 2rem;">
+                        Follow-ups: Week 2 check-in • Week 4 follow-up • Week 8 optimization • Then monthly/quarterly
+                    </p>
+                    
+                    <button class="btn" style="background: white; color: var(--ocean-blue); padding: 16px 40px; font-size: 1.1rem;">
+                        Begin your screening →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Preview -->
+        <section style="padding: 5rem 0; background: white;">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h2 style="text-align: center; margin-bottom: 3rem;">Common Questions</h2>
+                    
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--ocean-blue);">Isn't depression usually treated by psychiatrists?</h4>
+                        <p>Mild to moderate depression is most often first evaluated and managed by internists and primary care doctors. That's the standard of care. At MoodPath MD, we take that medical foundation further—with more time, targeted labs, and genetic testing—to guide treatment more precisely. For more complex cases, we collaborate with psychiatry when needed.</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--ocean-blue);">Is this different from seeing my PCP or a psychiatrist?</h4>
+                        <p>Yes. PCPs often have limited time, and psychiatrists may not review your full medical picture. We combine both: internist expertise + psychiatric care + genetics to guide safer, faster treatment.</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--ocean-blue);">How effective is this approach?</h4>
+                        <p>In large studies, genetic-guided prescribing improved response and remission rates compared to standard trial-and-error. Results vary, but this approach gives us more clarity from the start.</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--ocean-blue);">How much time will this save me?</h4>
+                        <p>Most patients complete labs and the initial consult within a week, versus months of back-and-forth elsewhere. Visits are telehealth—no commutes or waiting rooms.</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--ocean-blue);">Why pay out-of-pocket when psychiatry may be covered?</h4>
+                        <p>Traditional care often means short visits and months of trial-and-error. Our model reduces wasted time, side effects, and visits—often saving money and productivity in the long run.</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--ocean-blue);">Do I need a PCP?</h4>
+                        <p>Yes. Every patient must have a PCP for general health. We focus on mood, while your PCP manages your broader care.</p>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="btn btn-secondary">View all FAQs →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section style="padding: 5rem 0; background: var(--cream);">
+            <div class="container">
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <h2 style="text-align: center; margin-bottom: 3rem;">Patient Experiences</h2>
+                    
+                    <div style="display: grid; gap: 2rem;">
+                        <div class="testimonial">
+                            <p class="testimonial-text">
+                                "The care was focused, efficient, and explained clearly. I didn't have to keep going back and forth for visits."
+                            </p>
+                            <p class="testimonial-author">— Patient</p>
+                        </div>
+                        
+                        <div class="testimonial">
+                            <p class="testimonial-text">
+                                "Genetic testing explained why my first medication didn't work. The new plan was faster and smoother."
+                            </p>
+                            <p class="testimonial-author">— Patient</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="emergency-note">
+                    <strong>Crisis:</strong> If you are in immediate danger, call 988 or 911.
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: 3rem; margin: 2rem 0; flex-wrap: wrap;">
+                    <span>Board-certified</span>
+                    <span>State licensed</span>
+                    <span>HIPAA compliant</span>
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: 2rem; margin: 2rem 0;">
+                    <a href="#faq" style="color: var(--warm-gray-light); text-decoration: none;">FAQ</a>
+                    <a href="#pricing" style="color: var(--warm-gray-light); text-decoration: none;">Pricing</a>
+                    <a href="#contact" style="color: var(--warm-gray-light); text-decoration: none;">Contact</a>
+                </div>
+                
+                <p style="margin-top: 2rem; font-size: 0.875rem;">
+                    &copy; 2024 MoodPath MD. Not for emergencies. Telehealth has limitations. Results vary.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

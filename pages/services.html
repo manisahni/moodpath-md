@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Pricing - MoodPath MD</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--teal);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--coral);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .price-display {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin: 1rem 0;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: #546579;
+        }
+        
+        .service-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .service-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .check-icon {
+            color: var(--teal);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <path d="M20 5 C10 5, 5 15, 5 20 C5 25, 10 35, 20 35 C30 35, 35 25, 35 20 C35 15, 30 5, 20 5" fill="#2A9D8F"/>
+                            <circle cx="15" cy="18" r="2" fill="#fff"/>
+                            <circle cx="25" cy="18" r="2" fill="#fff"/>
+                            <path d="M15 25 Q20 28, 25 25" stroke="#fff" stroke-width="2" fill="none"/>
+                        </svg>
+                        <span class="logo-text">MoodPath MD</span>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="schedule.html" class="cta-button">Book Consultation</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="padding: 3rem 0;">
+            <div class="container">
+                <h1 style="text-align: center;">Services & Pricing</h1>
+                <p class="subtitle" style="text-align: center;">Transparent, affordable mental health care tailored to your needs</p>
+            </div>
+        </section>
+
+        <section style="padding: 4rem 0;">
+            <div class="container">
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Initial Consultation</h3>
+                        <div class="price-display">
+                            $249
+                            <span class="price-period">one-time</span>
+                        </div>
+                        <p>Comprehensive 60-minute evaluation</p>
+                        <ul class="service-list">
+                            <li><span class="check-icon">✓</span> Complete psychiatric assessment</li>
+                            <li><span class="check-icon">✓</span> Medical history review</li>
+                            <li><span class="check-icon">✓</span> PHQ-9 & GAD-7 screening</li>
+                            <li><span class="check-icon">✓</span> Personalized treatment plan</li>
+                            <li><span class="check-icon">✓</span> Medication recommendations</li>
+                            <li><span class="check-icon">✓</span> Lab work review</li>
+                        </ul>
+                        <button class="primary-btn" style="width: 100%;" onclick="location.href='schedule.html'">Book Initial Visit</button>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <span class="popular-badge">Most Popular</span>
+                        <h3>Monthly Membership</h3>
+                        <div class="price-display">
+                            $89
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p>Ongoing care with regular check-ins</p>
+                        <ul class="service-list">
+                            <li><span class="check-icon">✓</span> Monthly 30-min follow-up</li>
+                            <li><span class="check-icon">✓</span> Medication management</li>
+                            <li><span class="check-icon">✓</span> PHQ-9 progress tracking</li>
+                            <li><span class="check-icon">✓</span> Secure messaging</li>
+                            <li><span class="check-icon">✓</span> Prescription refills</li>
+                            <li><span class="check-icon">✓</span> Priority scheduling</li>
+                        </ul>
+                        <button class="primary-btn" style="width: 100%;" onclick="location.href='schedule.html'">Start Membership</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Follow-Up Visit</h3>
+                        <div class="price-display">
+                            $119
+                            <span class="price-period">per visit</span>
+                        </div>
+                        <p>As-needed 30-minute appointments</p>
+                        <ul class="service-list">
+                            <li><span class="check-icon">✓</span> Medication adjustments</li>
+                            <li><span class="check-icon">✓</span> Progress evaluation</li>
+                            <li><span class="check-icon">✓</span> Side effect management</li>
+                            <li><span class="check-icon">✓</span> Treatment plan updates</li>
+                            <li><span class="check-icon">✓</span> PHQ-9 reassessment</li>
+                            <li><span class="check-icon">✓</span> Prescription refills</li>
+                        </ul>
+                        <button class="secondary-btn" style="width: 100%;" onclick="location.href='schedule.html'">Schedule Follow-Up</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: var(--light-gray); padding: 4rem 0;">
+            <div class="container">
+                <h2>Add-On Services</h2>
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div style="background: white; border-radius: 10px; padding: 2rem; margin-top: 2rem; display: flex; align-items: center; gap: 3rem;">
+                        <div style="flex: 1;">
+                            <h3 style="color: var(--teal); margin-bottom: 1rem;">Genomic Testing</h3>
+                            <p style="line-height: 1.8; margin-bottom: 1rem;">
+                                Advanced pharmacogenomic testing analyzes your DNA to predict how you'll respond to different psychiatric medications. This one-time test can guide medication selection for life.
+                            </p>
+                            <ul style="list-style: disc; margin-left: 2rem; margin-bottom: 1.5rem;">
+                                <li>Reduces trial-and-error prescribing</li>
+                                <li>Minimizes adverse reactions</li>
+                                <li>Optimizes dosing</li>
+                                <li>Results in 7-10 days</li>
+                            </ul>
+                            <div style="display: flex; align-items: center; gap: 2rem;">
+                                <div class="price-tag" style="margin: 0;">
+                                    <span class="price">$299</span>
+                                    <span class="price-label">One-time test</span>
+                                </div>
+                                <button class="secondary-btn" onclick="location.href='schedule.html'">Add to Plan</button>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <svg width="150" height="150" viewBox="0 0 150 150">
+                                <circle cx="75" cy="75" r="70" fill="#2A9D8F" opacity="0.1"/>
+                                <path d="M50 50 Q75 70, 100 50 T100 100 Q75 120, 50 100 T50 50" 
+                                      stroke="#2A9D8F" stroke-width="3" fill="none"/>
+                                <path d="M100 50 Q75 70, 50 50 T50 100 Q75 120, 100 100 T100 50" 
+                                      stroke="#00B4D8" stroke-width="3" fill="none"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 4rem 0;">
+            <div class="container">
+                <h2>What's Included in Every Visit</h2>
+                <div class="steps-grid" style="margin-top: 2rem;">
+                    <div class="step">
+                        <div class="step-icon">🎯</div>
+                        <h3>Personalized Care</h3>
+                        <p>Treatment plans tailored to your unique needs, symptoms, and goals</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">📊</div>
+                        <h3>Progress Tracking</h3>
+                        <p>Regular PHQ-9 and GAD-7 assessments to measure improvement</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">💊</div>
+                        <h3>Medication Management</h3>
+                        <p>Evidence-based prescribing with careful monitoring of effects</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">🔬</div>
+                        <h3>Medical Evaluation</h3>
+                        <p>Screening for underlying medical conditions affecting mood</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: var(--light-gray); padding: 4rem 0;">
+            <div class="container">
+                <h2>Insurance & Payment</h2>
+                <div style="max-width: 800px; margin: 2rem auto;">
+                    <div style="background: white; padding: 2rem; border-radius: 10px;">
+                        <h3 style="color: var(--navy); margin-bottom: 1rem;">Cash-Pay Model</h3>
+                        <p style="line-height: 1.8; margin-bottom: 1.5rem;">
+                            We operate on a transparent cash-pay model to provide you with the best possible care without insurance limitations. This allows us to:
+                        </p>
+                        <ul style="list-style: disc; margin-left: 2rem; line-height: 1.8;">
+                            <li>Spend adequate time with each patient</li>
+                            <li>Avoid insurance-mandated treatment restrictions</li>
+                            <li>Maintain complete privacy of your records</li>
+                            <li>Provide same-week appointments</li>
+                        </ul>
+                        
+                        <h3 style="color: var(--navy); margin: 2rem 0 1rem;">Superbill for Reimbursement</h3>
+                        <p style="line-height: 1.8; margin-bottom: 1.5rem;">
+                            We can provide a detailed superbill that you can submit to your insurance for potential out-of-network reimbursement. Many patients receive 40-80% reimbursement depending on their plan.
+                        </p>
+                        
+                        <h3 style="color: var(--navy); margin: 2rem 0 1rem;">FSA/HSA Eligible</h3>
+                        <p style="line-height: 1.8;">
+                            All our services are eligible for payment with Flexible Spending Account (FSA) or Health Savings Account (HSA) funds.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Get Started?</h2>
+                    <p>Book your initial consultation today and take the first step toward better mental health</p>
+                    <button class="primary-btn large" onclick="location.href='schedule.html'" style="background: white; color: var(--teal);">Schedule Your First Visit</button>
+                    <p class="disclaimer">Questions? Call us at (555) 123-4567 or email hello@moodpathmd.com</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>MoodPath MD</h4>
+                    <p>Internist-led telehealth for depression and anxiety</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Dr. Sahni</a></li>
+                        <li><a href="services.html">Services & Pricing</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Emergency Resources</h4>
+                    <p class="emergency">Crisis Hotline: <strong>988</strong></p>
+                    <p>Available 24/7 for mental health emergencies</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MoodPath MD. All rights reserved. | HIPAA Compliant</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Assessment - MoodPath MD</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .assessment-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 20px;
+        }
+        
+        .assessment-progress {
+            background: #f0f0f0;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: var(--teal);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .assessment-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            display: none;
+        }
+        
+        .assessment-section.active {
+            display: block;
+        }
+        
+        .question {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .question:last-child {
+            border-bottom: none;
+        }
+        
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+        
+        .radio-options {
+            display: grid;
+            gap: 0.75rem;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            background: var(--light-gray);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .radio-option:hover {
+            background: #e8e8e8;
+        }
+        
+        .radio-option input[type="radio"] {
+            margin-right: 0.75rem;
+        }
+        
+        .radio-option.selected {
+            background: rgba(42, 157, 143, 0.1);
+            border: 1px solid var(--teal);
+        }
+        
+        .assessment-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .results-section {
+            background: linear-gradient(135deg, #2A9D8F15 0%, #00B4D815 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .score-display {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin: 1rem 0;
+        }
+        
+        .severity-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+        
+        .severity-minimal { background: #4CAF50; color: white; }
+        .severity-mild { background: #8BC34A; color: white; }
+        .severity-moderate { background: #FFC107; color: white; }
+        .severity-moderately-severe { background: #FF9800; color: white; }
+        .severity-severe { background: #F44336; color: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <path d="M20 5 C10 5, 5 15, 5 20 C5 25, 10 35, 20 35 C30 35, 35 25, 35 20 C35 15, 30 5, 20 5" fill="#2A9D8F"/>
+                            <circle cx="15" cy="18" r="2" fill="#fff"/>
+                            <circle cx="25" cy="18" r="2" fill="#fff"/>
+                            <path d="M15 25 Q20 28, 25 25" stroke="#fff" stroke-width="2" fill="none"/>
+                        </svg>
+                        <span class="logo-text">MoodPath MD</span>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../pages/about.html">About</a></li>
+                        <li><a href="../pages/services.html">Services</a></li>
+                        <li><a href="../pages/faq.html">FAQ</a></li>
+                        <li><a href="../pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="assessment-container">
+            <h1 style="text-align: center; margin-bottom: 0.5rem;">Mental Health Assessment</h1>
+            <p style="text-align: center; color: #546579; margin-bottom: 2rem;">
+                This confidential screening will help us understand your symptoms
+            </p>
+            
+            <div class="assessment-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <!-- PHQ-9 Section -->
+            <form id="phq9-form" class="assessment-section active">
+                <h2>Depression Screening (PHQ-9)</h2>
+                <p style="margin-bottom: 2rem;">Over the last 2 weeks, how often have you been bothered by any of the following problems?</p>
+                
+                <div class="question">
+                    <div class="question-text">1. Little interest or pleasure in doing things</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q1" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q1" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q1" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q1" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">2. Feeling down, depressed, or hopeless</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q2" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q2" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q2" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q2" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">3. Trouble falling or staying asleep, or sleeping too much</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q3" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q3" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q3" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q3" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">4. Feeling tired or having little energy</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q4" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q4" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q4" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q4" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">5. Poor appetite or overeating</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q5" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q5" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q5" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q5" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">6. Feeling bad about yourself — or that you are a failure or have let yourself or your family down</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q6" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q6" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q6" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q6" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">7. Trouble concentrating on things, such as reading the newspaper or watching television</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q7" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q7" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q7" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q7" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">8. Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q8" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q8" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q8" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q8" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">9. Thoughts that you would be better off dead or of hurting yourself in some way</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q9" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q9" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q9" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="phq9_q9" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment-buttons">
+                    <button type="button" class="secondary-btn" onclick="location.href='../index.html'">Cancel</button>
+                    <button type="button" class="primary-btn" onclick="nextSection()">Continue to Anxiety Screening</button>
+                </div>
+            </form>
+
+            <!-- GAD-7 Section -->
+            <form id="gad7-form" class="assessment-section">
+                <h2>Anxiety Screening (GAD-7)</h2>
+                <p style="margin-bottom: 2rem;">Over the last 2 weeks, how often have you been bothered by the following problems?</p>
+                
+                <div class="question">
+                    <div class="question-text">1. Feeling nervous, anxious, or on edge</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q1" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q1" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q1" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q1" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">2. Not being able to stop or control worrying</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q2" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q2" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q2" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q2" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">3. Worrying too much about different things</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q3" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q3" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q3" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q3" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">4. Trouble relaxing</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q4" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q4" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q4" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q4" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">5. Being so restless that it is hard to sit still</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q5" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q5" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q5" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q5" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">6. Becoming easily annoyed or irritable</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q6" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q6" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q6" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q6" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">7. Feeling afraid, as if something awful might happen</div>
+                    <div class="radio-options">
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q7" value="0" required>
+                            Not at all
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q7" value="1">
+                            Several days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q7" value="2">
+                            More than half the days
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="gad7_q7" value="3">
+                            Nearly every day
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment-buttons">
+                    <button type="button" class="secondary-btn" onclick="previousSection()">Back</button>
+                    <button type="button" class="primary-btn" onclick="calculateResults()">Get Results</button>
+                </div>
+            </form>
+
+            <!-- Results Section -->
+            <div id="results-section" class="assessment-section">
+                <div class="results-section">
+                    <h2>Your Assessment Results</h2>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                        <div>
+                            <h3>Depression (PHQ-9)</h3>
+                            <div class="score-display" id="phq9-score">0</div>
+                            <div class="severity-badge" id="phq9-severity">Calculating...</div>
+                        </div>
+                        <div>
+                            <h3>Anxiety (GAD-7)</h3>
+                            <div class="score-display" id="gad7-score">0</div>
+                            <div class="severity-badge" id="gad7-severity">Calculating...</div>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin: 2rem 0;">
+                        Based on your responses, we recommend scheduling a consultation with Dr. Sahni to discuss your symptoms and develop a personalized treatment plan.
+                    </p>
+                    
+                    <div style="background: white; padding: 1.5rem; border-radius: 10px; text-align: left; margin: 2rem 0;">
+                        <h4 style="color: var(--navy); margin-bottom: 1rem;">What's Next?</h4>
+                        <ol style="line-height: 1.8; margin-left: 1.5rem;">
+                            <li>Schedule your initial consultation with Dr. Sahni</li>
+                            <li>Complete pre-visit medical history forms</li>
+                            <li>Prepare list of current medications and supplements</li>
+                            <li>Consider genomic testing to optimize medication selection</li>
+                        </ol>
+                    </div>
+                    
+                    <button class="primary-btn large" onclick="location.href='../pages/schedule.html'">Schedule Consultation</button>
+                    
+                    <p style="font-size: 0.9rem; color: #546579; margin-top: 2rem;">
+                        These screening tools are not a substitute for professional diagnosis. 
+                        If you're having thoughts of self-harm, please call 988 immediately.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 MoodPath MD. All rights reserved. | HIPAA Compliant</p>
+                <p class="emergency" style="margin-top: 1rem;">Crisis Hotline: <strong>988</strong> - Available 24/7</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form navigation
+        let currentSection = 0;
+        const sections = document.querySelectorAll('.assessment-section');
+        
+        function updateProgress() {
+            const progress = ((currentSection + 1) / sections.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+        
+        function nextSection() {
+            if (currentSection < sections.length - 1) {
+                sections[currentSection].classList.remove('active');
+                currentSection++;
+                sections[currentSection].classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+            }
+        }
+        
+        function previousSection() {
+            if (currentSection > 0) {
+                sections[currentSection].classList.remove('active');
+                currentSection--;
+                sections[currentSection].classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+            }
+        }
+        
+        function calculateResults() {
+            // Calculate PHQ-9
+            let phq9Score = 0;
+            for (let i = 1; i <= 9; i++) {
+                const checked = document.querySelector(`input[name="phq9_q${i}"]:checked`);
+                if (checked) {
+                    phq9Score += parseInt(checked.value);
+                }
+            }
+            
+            // Calculate GAD-7
+            let gad7Score = 0;
+            for (let i = 1; i <= 7; i++) {
+                const checked = document.querySelector(`input[name="gad7_q${i}"]:checked`);
+                if (checked) {
+                    gad7Score += parseInt(checked.value);
+                }
+            }
+            
+            // Display results
+            document.getElementById('phq9-score').textContent = phq9Score;
+            document.getElementById('gad7-score').textContent = gad7Score;
+            
+            // Set PHQ-9 severity
+            const phq9Severity = document.getElementById('phq9-severity');
+            if (phq9Score <= 4) {
+                phq9Severity.textContent = 'Minimal Depression';
+                phq9Severity.className = 'severity-badge severity-minimal';
+            } else if (phq9Score <= 9) {
+                phq9Severity.textContent = 'Mild Depression';
+                phq9Severity.className = 'severity-badge severity-mild';
+            } else if (phq9Score <= 14) {
+                phq9Severity.textContent = 'Moderate Depression';
+                phq9Severity.className = 'severity-badge severity-moderate';
+            } else if (phq9Score <= 19) {
+                phq9Severity.textContent = 'Moderately Severe';
+                phq9Severity.className = 'severity-badge severity-moderately-severe';
+            } else {
+                phq9Severity.textContent = 'Severe Depression';
+                phq9Severity.className = 'severity-badge severity-severe';
+            }
+            
+            // Set GAD-7 severity
+            const gad7Severity = document.getElementById('gad7-severity');
+            if (gad7Score <= 4) {
+                gad7Severity.textContent = 'Minimal Anxiety';
+                gad7Severity.className = 'severity-badge severity-minimal';
+            } else if (gad7Score <= 9) {
+                gad7Severity.textContent = 'Mild Anxiety';
+                gad7Severity.className = 'severity-badge severity-mild';
+            } else if (gad7Score <= 14) {
+                gad7Severity.textContent = 'Moderate Anxiety';
+                gad7Severity.className = 'severity-badge severity-moderate';
+            } else {
+                gad7Severity.textContent = 'Severe Anxiety';
+                gad7Severity.className = 'severity-badge severity-severe';
+            }
+            
+            // Show results
+            nextSection();
+        }
+        
+        // Add click highlighting for radio options
+        document.querySelectorAll('.radio-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const siblings = this.parentElement.querySelectorAll('.radio-option');
+                siblings.forEach(s => s.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodPath MD - Personalized Mood Care, From Anywhere</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <svg width="35" height="35" viewBox="0 0 40 40">
+                            <circle cx="20" cy="20" r="15" fill="none" stroke="#87a878" stroke-width="1" opacity="0.5"/>
+                            <circle cx="20" cy="20" r="3" fill="#87a878" opacity="0.7"/>
+                        </svg>
+                        <span class="logo-text">MoodPath MD</span>
+                    </div>
+                    <ul class="nav-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/about.html">About</a></li>
+                        <li><a href="pages/services.html">Services</a></li>
+                        <li><a href="pages/faq.html">FAQ</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                        <li><a href="pages/schedule.html" class="cta-button">Let's Talk</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>A Quieter Approach to Mental Wellness</h1>
+                    <p class="subtitle">Thoughtful care that considers your whole story, guided by Dr. Sahni's integrative medical perspective</p>
+                    <button class="primary-btn" onclick="location.href='forms/assessment.html'">Begin With a Simple Check-In</button>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">Gentle</span>
+                            <span class="stat-label">Evidence-based approach</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Holistic</span>
+                            <span class="stat-label">Mind-body perspective</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Personal</span>
+                            <span class="stat-label">Your unique journey</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How We Work Together</h2>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-icon">📋</div>
+                        <h3>1. Understanding</h3>
+                        <p>We begin by listening to your story and understanding where you are</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">👨‍⚕️</div>
+                        <h3>2. Connection</h3>
+                        <p>A compassionate conversation with Dr. Sahni in a comfortable virtual space</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">🧬</div>
+                        <h3>3. Gentle Guidance</h3>
+                        <p>Personalized recommendations that honor your preferences and biology</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">📊</div>
+                        <h3>4. Walking Together</h3>
+                        <p>Regular check-ins to support your gradual journey toward wellness</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="outcomes">
+            <div class="container">
+                <h2>The Journey of Healing</h2>
+                <div class="outcomes-content">
+                    <div class="chart-container">
+                        <canvas id="phq9-chart"></canvas>
+                        <p class="chart-caption">Average patient PHQ-9 score reduction over 12 weeks</p>
+                    </div>
+                    <div class="outcomes-text">
+                        <h3>What You Can Expect</h3>
+                        <ul class="benefits-list">
+                            <li>• Gradual, sustainable improvement</li>
+                            <li>• A therapeutic relationship built on trust</li>
+                            <li>• Treatment that fits your life</li>
+                            <li>• Space to process at your own pace</li>
+                            <li>• Options informed by science and wisdom</li>
+                        </ul>
+                        <button class="secondary-btn" onclick="location.href='pages/services.html'">Explore Our Approach</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="genomics">
+            <div class="container">
+                <h2>Understanding Your Unique Biology</h2>
+                <div class="genomics-grid">
+                    <div class="genomics-content">
+                        <h3>When Medicine Meets You Where You Are</h3>
+                        <p>Sometimes understanding your genetic makeup can illuminate the path forward:</p>
+                        <ul>
+                            <li>Discover how your body processes medications</li>
+                            <li>Reduce uncertainty in treatment choices</li>
+                            <li>Honor your body's unique wisdom</li>
+                            <li>Make informed decisions together</li>
+                        </ul>
+                        <div class="price-tag" style="background: var(--soft-blue); margin-top: 2rem;">
+                            <span class="price" style="font-size: 1.2rem; font-weight: 400;">Optional genomic insight</span>
+                            <span class="price-label">Available when you're ready</span>
+                        </div>
+                    </div>
+                    <div class="genomics-visual">
+                        <svg class="dna-icon" viewBox="0 0 200 300">
+                            <path d="M50 50 Q100 100, 150 50 T150 150 Q100 200, 50 150 T50 250" 
+                                  stroke="#00B4D8" stroke-width="4" fill="none"/>
+                            <path d="M150 50 Q100 100, 50 50 T50 150 Q100 200, 150 150 T150 250" 
+                                  stroke="#2A9D8F" stroke-width="4" fill="none"/>
+                            <circle cx="50" cy="50" r="8" fill="#E63946"/>
+                            <circle cx="150" cy="50" r="8" fill="#E63946"/>
+                            <circle cx="50" cy="150" r="8" fill="#E63946"/>
+                            <circle cx="150" cy="150" r="8" fill="#E63946"/>
+                            <circle cx="50" cy="250" r="8" fill="#E63946"/>
+                            <circle cx="150" cy="250" r="8" fill="#E63946"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>Voices From Our Community</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <p>"Dr. Sahni listened—really listened—to my whole story. For the first time, I felt seen as a complete person, not just symptoms."</p>
+                        <cite>- Sarah M.</cite>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <p>"The gentle pace of treatment allowed me to heal without feeling rushed. Small steps led to meaningful change."</p>
+                        <cite>- Michael R.</cite>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">★★★★★</div>
+                        <p>"Having a doctor who understands both the medical and emotional aspects of depression made all the difference."</p>
+                        <cite>- Jennifer L.</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>When You're Ready, We're Here</h2>
+                    <p>There's no rush. Begin with a simple self-reflection when it feels right.</p>
+                    <button class="primary-btn large" onclick="location.href='forms/assessment.html'">Quiet Self-Assessment</button>
+                    <p class="disclaimer" style="opacity: 0.8;">If you're in crisis, please reach out for immediate support at 988.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>MoodPath MD</h4>
+                    <p>Internist-led telehealth for depression and anxiety</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="pages/about.html">About Dr. Sahni</a></li>
+                        <li><a href="pages/services.html">Services & Pricing</a></li>
+                        <li><a href="pages/faq.html">FAQ</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Patient Resources</h4>
+                    <ul>
+                        <li><a href="forms/assessment.html">PHQ-9 Assessment</a></li>
+                        <li><a href="pages/schedule.html">Book Consultation</a></li>
+                        <li><a href="#">Patient Portal</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Emergency Resources</h4>
+                    <p class="emergency">Crisis Hotline: <strong>988</strong></p>
+                    <p>Available 24/7 for mental health emergencies</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MoodPath MD. All rights reserved. | HIPAA Compliant</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

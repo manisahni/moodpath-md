@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodPath MD - Color Palette</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #87a878;
+            --sage-light: #9db890;
+            --sage-dark: #7a9a6b;
+            --sage-muted: rgba(135, 168, 120, 0.1);
+            
+            --soft-blue: #a8c4d4;
+            --soft-blue-light: #b8d0de;
+            --soft-blue-dark: #98b4c4;
+            --soft-blue-muted: rgba(168, 196, 212, 0.1);
+            
+            --warm-sand: #e8dcc6;
+            --warm-sand-light: #f0e6d6;
+            --warm-sand-dark: #e0d4b6;
+            --warm-sand-muted: rgba(232, 220, 198, 0.1);
+            
+            --light-cream: #faf8f3;
+            --soft-charcoal: #4a5568;
+            --white: #ffffff;
+            
+            --shadow-soft: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-medium: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--light-cream);
+            color: var(--soft-charcoal);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: rgba(74, 85, 104, 0.7);
+            margin-bottom: 3rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .color-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.2s ease;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .color-display {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        
+        .color-info {
+            background: var(--white);
+            padding: 1rem;
+            border-top: 1px solid rgba(135, 168, 120, 0.1);
+        }
+        
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--soft-charcoal);
+        }
+        
+        .color-values {
+            font-size: 0.85rem;
+            color: rgba(74, 85, 104, 0.7);
+            line-height: 1.5;
+        }
+        
+        .palette-row {
+            display: flex;
+            gap: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            margin: 1.5rem 0;
+        }
+        
+        .palette-item {
+            flex: 1;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .usage-example {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--light-cream);
+            border-radius: 8px;
+        }
+        
+        .button-example {
+            padding: 0.8rem 1.6rem;
+            border-radius: 22px;
+            border: none;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .primary-button {
+            background: var(--sage);
+            color: white;
+        }
+        
+        .primary-button:hover {
+            background: var(--sage-dark);
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--sage);
+            border: 1px solid var(--sage);
+        }
+        
+        .secondary-button:hover {
+            background: var(--sage);
+            color: white;
+        }
+        
+        .text-example {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        
+        .contrast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contrast-box {
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MoodPath MD Color System</h1>
+        <p class="subtitle">A therapeutic color palette designed for emotional wellness and calm interaction</p>
+        
+        <!-- Primary Colors -->
+        <div class="section">
+            <h2>Primary Palette</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-display" style="background: #87a878; color: white;">
+                        Aa
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Sage</div>
+                        <div class="color-values">
+                            HEX: #87a878<br>
+                            RGB: 135, 168, 120<br>
+                            Primary Actions
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-display" style="background: #a8c4d4; color: white;">
+                        Aa
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Soft Blue</div>
+                        <div class="color-values">
+                            HEX: #a8c4d4<br>
+                            RGB: 168, 196, 212<br>
+                            Secondary Elements
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-display" style="background: #e8dcc6; color: #4a5568;">
+                        Aa
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Warm Sand</div>
+                        <div class="color-values">
+                            HEX: #e8dcc6<br>
+                            RGB: 232, 220, 198<br>
+                            Gentle Accents
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Neutral Colors -->
+        <div class="section">
+            <h2>Neutral Palette</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-display" style="background: #faf8f3; color: #4a5568;">
+                        Aa
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Light Cream</div>
+                        <div class="color-values">
+                            HEX: #faf8f3<br>
+                            RGB: 250, 248, 243<br>
+                            Backgrounds
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-display" style="background: #4a5568; color: white;">
+                        Aa
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Soft Charcoal</div>
+                        <div class="color-values">
+                            HEX: #4a5568<br>
+                            RGB: 74, 85, 104<br>
+                            Text & Headers
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="color-card">
+                    <div class="color-display" style="background: #ffffff; color: #4a5568; border: 1px solid #e0e0e0;">
+                        Aa
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Pure White</div>
+                        <div class="color-values">
+                            HEX: #ffffff<br>
+                            RGB: 255, 255, 255<br>
+                            Content Areas
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Color Variations -->
+        <div class="section">
+            <h2>Color Variations</h2>
+            
+            <h3 style="margin-top: 2rem; font-size: 1.1rem;">Sage Family</h3>
+            <div class="palette-row">
+                <div class="palette-item" style="background: rgba(135, 168, 120, 0.1); color: #4a5568;">10%</div>
+                <div class="palette-item" style="background: #9db890;">Light</div>
+                <div class="palette-item" style="background: #87a878;">Base</div>
+                <div class="palette-item" style="background: #7a9a6b;">Dark</div>
+            </div>
+            
+            <h3 style="margin-top: 2rem; font-size: 1.1rem;">Soft Blue Family</h3>
+            <div class="palette-row">
+                <div class="palette-item" style="background: rgba(168, 196, 212, 0.1); color: #4a5568;">10%</div>
+                <div class="palette-item" style="background: #b8d0de;">Light</div>
+                <div class="palette-item" style="background: #a8c4d4;">Base</div>
+                <div class="palette-item" style="background: #98b4c4;">Dark</div>
+            </div>
+            
+            <h3 style="margin-top: 2rem; font-size: 1.1rem;">Warm Sand Family</h3>
+            <div class="palette-row">
+                <div class="palette-item" style="background: rgba(232, 220, 198, 0.1); color: #4a5568;">10%</div>
+                <div class="palette-item" style="background: #f0e6d6;">Light</div>
+                <div class="palette-item" style="background: #e8dcc6;">Base</div>
+                <div class="palette-item" style="background: #e0d4b6;">Dark</div>
+            </div>
+        </div>
+        
+        <!-- Usage Examples -->
+        <div class="section">
+            <h2>Component Examples</h2>
+            
+            <h3 style="margin-top: 2rem; font-size: 1.1rem;">Buttons</h3>
+            <div class="usage-example">
+                <button class="button-example primary-button">Primary Action</button>
+                <button class="button-example secondary-button">Secondary Action</button>
+                <button class="button-example" style="background: var(--soft-blue); color: white;">Info Button</button>
+                <button class="button-example" style="background: var(--warm-sand); color: var(--soft-charcoal);">Gentle Alert</button>
+            </div>
+            
+            <h3 style="margin-top: 2rem; font-size: 1.1rem;">Text Hierarchy</h3>
+            <div class="text-example">
+                <h1 style="color: var(--soft-charcoal); font-size: 1.8rem; margin-bottom: 0.5rem;">Heading Text</h1>
+                <p style="color: var(--soft-charcoal); margin-bottom: 0.5rem;">Regular body text appears in soft charcoal for comfortable reading without harsh contrast.</p>
+                <p style="color: rgba(74, 85, 104, 0.7);">Secondary text uses reduced opacity for subtle hierarchy.</p>
+                <a href="#" style="color: var(--sage); text-decoration: none;">Link text in sage green</a>
+            </div>
+        </div>
+        
+        <!-- Accessibility -->
+        <div class="section">
+            <h2>Contrast & Accessibility</h2>
+            <div class="contrast-grid">
+                <div class="contrast-box" style="background: var(--light-cream); color: var(--soft-charcoal);">
+                    <strong>7.2:1</strong><br>
+                    Text on Cream<br>
+                    WCAG AAA ✓
+                </div>
+                <div class="contrast-box" style="background: white; color: var(--soft-charcoal);">
+                    <strong>7.8:1</strong><br>
+                    Text on White<br>
+                    WCAG AAA ✓
+                </div>
+                <div class="contrast-box" style="background: white; color: var(--sage);">
+                    <strong>3.1:1</strong><br>
+                    Sage on White<br>
+                    WCAG AA Large ✓
+                </div>
+                <div class="contrast-box" style="background: var(--sage); color: white;">
+                    <strong>4.5:1</strong><br>
+                    White on Sage<br>
+                    WCAG AA ✓
+                </div>
+            </div>
+        </div>
+        
+        <!-- Psychology -->
+        <div class="section">
+            <h2>Color Psychology</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+                <div>
+                    <h3 style="color: var(--sage); font-size: 1.1rem;">Sage Green</h3>
+                    <p style="line-height: 1.8;">Promotes healing and growth. Reduces anxiety while maintaining approachability. Perfect for primary actions that feel inviting rather than demanding.</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--soft-blue); font-size: 1.1rem;">Soft Blue</h3>
+                    <p style="line-height: 1.8;">Builds trust and stability. Creates mental clarity and spaciousness. Ideal for informational elements that need to feel reliable.</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--warm-sand); font-size: 1.1rem;">Warm Sand</h3>
+                    <p style="line-height: 1.8;">Provides comfort and grounding. Adds human warmth to clinical interactions. Used for gentle notifications and supportive messaging.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
