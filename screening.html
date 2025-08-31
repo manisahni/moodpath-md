@@ -477,12 +477,12 @@
                             <div class="question-number">Question 6</div>
                             <div class="question-text">Please provide your age and state:</div>
                             <div class="answer-options">
-                                <div style="margin-bottom: var(--space-md);">
-                                    <label style="display: block; margin-bottom: var(--space-xs); color: var(--text-light);">Your Age:</label>
+                                <div style="margin-bottom: 1.5rem;">
+                                    <label style="display: block; margin-bottom: 0.5rem; color: var(--warm-gray);">Your Age:</label>
                                     <input type="number" class="number-input" id="age" min="18" max="75" placeholder="Enter your age" onkeyup="checkDemographics()">
                                 </div>
                                 <div>
-                                    <label style="display: block; margin-bottom: var(--space-xs); color: var(--text-light);">Current State:</label>
+                                    <label style="display: block; margin-bottom: 0.5rem; color: var(--warm-gray);">Current State:</label>
                                     <div class="select-wrapper">
                                         <select class="select-input" id="state" onchange="checkDemographics()">
                                             <option value="">Please select your state...</option>
@@ -523,7 +523,7 @@
                     <p id="resultMessage">Thank you for completing the assessment.</p>
                     <p id="resultSubMessage">Our board-certified physician specializes in treating mild to moderate depression and anxiety through personalized, online care.</p>
                     <div class="results-email" id="resultEmail" style="display: none;">scheduling@moodpathmd.com</div>
-                    <a href="#" class="btn btn-primary" id="resultButton" style="margin-top: var(--space-md);">Next Steps</a>
+                    <a href="#" class="btn btn-primary" id="resultButton" style="margin-top: 1.5rem;">Next Steps</a>
                 </div>
 
                 <!-- Navigation -->
@@ -538,7 +538,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p style="text-align: center; color: var(--text-light); font-size: var(--text-sm);">
+            <p style="text-align: center; color: var(--warm-gray); font-size: 0.875rem;">
                 If you're in crisis, please call 988 immediately.
             </p>
         </div>
@@ -990,6 +990,25 @@
                 sessionStorage.setItem('screening_responses', JSON.stringify(formData));
             }
         }
+
+        // ================================================
+        // INITIALIZATION
+        // ================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show first question
+            document.querySelector('[data-question="1"]').classList.add('active');
+            
+            // Initialize progress
+            updateProgress();
+            
+            // Disable previous button initially
+            document.getElementById('prevBtn').disabled = true;
+            
+            // Hide next button initially (will show when answer is selected)
+            document.getElementById('nextBtn').style.display = 'none';
+            
+            console.log('Screening form initialized');
+        });
     </script>
 </body>
 </html>
