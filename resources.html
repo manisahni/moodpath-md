@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary Meta Tags -->
-    <title>Free Mental Health Resources - CBT & Depression Tools | MoodPath MD</title>
-    <meta name="title" content="Free Mental Health Resources - CBT & Depression Tools | MoodPath MD">
-    <meta name="description" content="Free mental health resources including CBT programs and evidence-based tools to complement your treatment. Enhance your care with MoodPath MD.">
-    <meta name="keywords" content="free mental health resources, CBT therapy, depression tools, anxiety resources, mental health apps, online therapy resources">
+    <title>Free Mental Health Resources - CBT, PHQ-9 Tracking & Depression Tools | MoodPath MD</title>
+    <meta name="title" content="Free Mental Health Resources - CBT, PHQ-9 Tracking & Depression Tools | MoodPath MD">
+    <meta name="description" content="Free mental health resources including CBT programs, PHQ-9 depression screening, and evidence-based tools to complement your treatment. Enhance your care with MoodPath MD.">
+    <meta name="keywords" content="free mental health resources, CBT therapy, PHQ-9 depression screening, mood tracking, depression tools, anxiety resources, mental health apps, online therapy resources">
     <meta name="author" content="MoodPath MD">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://manisahni.github.io/moodpath-md/resources.html">
-    <meta property="og:title" content="Free Mental Health Resources - CBT & Depression Tools">
-    <meta property="og:description" content="Free mental health resources including CBT programs and evidence-based tools to complement your treatment.">
+    <meta property="og:title" content="Free Mental Health Resources - CBT, PHQ-9 Tracking & Depression Tools">
+    <meta property="og:description" content="Free mental health resources including CBT programs, PHQ-9 depression screening, and evidence-based tools to complement your treatment.">
     <meta property="og:image" content="https://manisahni.github.io/moodpath-md/assets/images/moodpath-md-resources-og.jpg">
     <meta property="og:site_name" content="MoodPath MD">
     <meta property="og:locale" content="en_US">
@@ -24,8 +24,8 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://manisahni.github.io/moodpath-md/resources.html">
-    <meta property="twitter:title" content="Free Mental Health Resources - CBT & Depression Tools">
-    <meta property="twitter:description" content="Free mental health resources including CBT programs and evidence-based tools to complement your treatment.">
+    <meta property="twitter:title" content="Free Mental Health Resources - CBT, PHQ-9 Tracking & Depression Tools">
+    <meta property="twitter:description" content="Free mental health resources including CBT programs, PHQ-9 depression screening, and evidence-based tools to complement your treatment.">
     <meta property="twitter:image" content="https://manisahni.github.io/moodpath-md/assets/images/moodpath-md-resources-og.jpg">
     
     <!-- Canonical URL -->
@@ -37,7 +37,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Free Mental Health Resources",
-        "description": "Free mental health resources including CBT programs and evidence-based tools to complement your treatment.",
+        "description": "Free mental health resources including CBT programs, PHQ-9 depression screening, and evidence-based tools to complement your treatment.",
         "url": "https://manisahni.github.io/moodpath-md/resources.html",
         "mainEntity": {
             "@type": "ItemList",
@@ -58,7 +58,7 @@
                     "position": 2,
                     "item": {
                         "@type": "Service",
-                        "name": "Mental Health Resources",
+                        "name": "PHQ-9 Depression Screening",
                         "description": "Validated depression screening tool",
                         "url": "https://www.phqscreeners.com/select-screener/18"
                     }
@@ -157,7 +157,7 @@
         .resource-benefits {
             background: rgba(44, 95, 124, 0.05);
             border-radius: 8px;
-            padding: 1rem;
+            padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
         
@@ -204,12 +204,51 @@
             transform: translateX(4px);
         }
         
-
+        .phq9-section {
+            background: linear-gradient(135deg, rgba(123, 160, 152, 0.1) 0%, rgba(44, 95, 124, 0.05) 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(44, 95, 124, 0.1);
+        }
+        
+        .phq9-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .phq9-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(44, 95, 124, 0.1);
+        }
+        
+        .phq9-score {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ocean-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .phq9-label {
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+        
+        .phq9-description {
+            font-size: 0.875rem;
+            color: var(--warm-gray);
+        }
         
         .disclaimer {
             background: rgba(44, 95, 124, 0.05);
             border-radius: 8px;
-            padding: 1rem;
+            padding: 1.5rem;
             margin-top: 2rem;
             text-align: center;
         }
@@ -230,10 +269,12 @@
             }
             
             .resource-card {
-                padding: 1rem;
+                padding: 1.5rem;
             }
             
-
+            .phq9-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -268,159 +309,118 @@
 
     <div class="container">
         <div class="resources-container">
-            <!-- Progress Tracking Demo -->
+            <!-- CBT Resources Card -->
             <div class="resource-card">
                 <div class="resource-header">
-                    <div class="resource-icon">📊</div>
-                    <h2 class="resource-title">Track Your Progress</h2>
+                    <div class="resource-icon">🌱</div>
+                    <h2 class="resource-title">Enhance Your Care – Free Mood Resources</h2>
                 </div>
                 
                 <div class="resource-description">
-                    <p>See how treatment helps you feel better over time. This sample shows typical improvement patterns.</p>
+                    <p><strong>Medication helps your brain chemistry.</strong><br>
+                    <strong>CBT (Cognitive Behavioral Therapy) helps your thought patterns.</strong><br>
+                    <strong>Together, they speed recovery and prevent relapse.</strong></p>
                 </div>
                 
-                <!-- Beautiful Mock Bar Graph -->
-                <div style="background: white; border-radius: 16px; padding: 2rem; margin: 2rem 0; box-shadow: 0 4px 16px rgba(44, 95, 124, 0.1);">
-                    <h3 style="color: var(--ocean-blue); margin-bottom: 1.5rem; text-align: center;">Sample Patient Progress</h3>
-                    
-                    <!-- Bar Chart -->
-                    <div style="position: relative; height: 300px; margin: 2rem 0; padding: 1rem;">
-                        <!-- Chart Background -->
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(123, 160, 152, 0.05) 0%, rgba(44, 95, 124, 0.02) 100%); border-radius: 12px;"></div>
-                        
-                        <!-- Y-axis labels -->
-                        <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 60px; display: flex; flex-direction: column; justify-content: space-between; padding: 1rem 0;">
-                            <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600;">27</span>
-                            <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600;">20</span>
-                            <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600;">15</span>
-                            <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600;">10</span>
-                            <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600;">5</span>
-                            <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600;">0</span>
-                        </div>
-                        
-                        <!-- Colorful Bars -->
-                        <div style="position: absolute; top: 0; left: 60px; right: 0; bottom: 0; padding: 1rem; display: flex; align-items: end; justify-content: space-around;">
-                            <!-- Week 1 -->
-                            <div style="display: flex; flex-direction: column; align-items: center; width: 60px;">
-                                <div style="width: 40px; height: 200px; background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%); border-radius: 8px 8px 0 0; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);"></div>
-                                <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem;">Week 1</span>
-                                <span style="color: #dc2626; font-size: 1rem; font-weight: 700;">22</span>
-                            </div>
-                            
-                            <!-- Week 2 -->
-                            <div style="display: flex; flex-direction: column; align-items: center; width: 60px;">
-                                <div style="width: 40px; height: 180px; background: linear-gradient(180deg, #f97316 0%, #ea580c 100%); border-radius: 8px 8px 0 0; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);"></div>
-                                <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem;">Week 2</span>
-                                <span style="color: #ea580c; font-size: 1rem; font-weight: 700;">20</span>
-                            </div>
-                            
-                            <!-- Week 3 -->
-                            <div style="display: flex; flex-direction: column; align-items: center; width: 60px;">
-                                <div style="width: 40px; height: 160px; background: linear-gradient(180deg, #eab308 0%, #ca8a04 100%); border-radius: 8px 8px 0 0; box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);"></div>
-                                <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem;">Week 3</span>
-                                <span style="color: #ca8a04; font-size: 1rem; font-weight: 700;">18</span>
-                            </div>
-                            
-                            <!-- Week 4 -->
-                            <div style="display: flex; flex-direction: column; align-items: center; width: 60px;">
-                                <div style="width: 40px; height: 140px; background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%); border-radius: 8px 8px 0 0; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);"></div>
-                                <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem;">Week 4</span>
-                                <span style="color: #16a34a; font-size: 1rem; font-weight: 700;">16</span>
-                            </div>
-                            
-                            <!-- Week 5 -->
-                            <div style="display: flex; flex-direction: column; align-items: center; width: 60px;">
-                                <div style="width: 40px; height: 120px; background: linear-gradient(180deg, #06b6d4 0%, #0891b2 100%); border-radius: 8px 8px 0 0; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);"></div>
-                                <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem;">Week 5</span>
-                                <span style="color: #0891b2; font-size: 1rem; font-weight: 700;">14</span>
-                            </div>
-                            
-                            <!-- Week 6 -->
-                            <div style="display: flex; flex-direction: column; align-items: center; width: 60px;">
-                                <div style="width: 40px; height: 100px; background: linear-gradient(180deg, #8b5cf6 0%, #7c3aed 100%); border-radius: 8px 8px 0 0; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);"></div>
-                                <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem;">Week 6</span>
-                                <span style="color: #7c3aed; font-size: 1rem; font-weight: 700;">12</span>
-                            </div>
-                            
-                            <!-- Week 7 -->
-                            <div style="display: flex; flex-direction: column; align-items: center; width: 60px;">
-                                <div style="width: 40px; height: 80px; background: linear-gradient(180deg, #ec4899 0%, #db2777 100%); border-radius: 8px 8px 0 0; box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);"></div>
-                                <span style="color: var(--warm-gray); font-size: 0.875rem; font-weight: 600; margin-top: 0.5rem;">Week 7</span>
-                                <span style="color: #db2777; font-size: 1rem; font-weight: 700;">10</span>
-                            </div>
-                        </div>
+                <div class="resource-benefits">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <span>Evidence-based online CBT program</span>
                     </div>
-                    
-                    <!-- Progress Summary -->
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                        <div style="background: rgba(123, 160, 152, 0.1); padding: 1rem; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 700; color: var(--ocean-blue); margin-bottom: 0.5rem;">22 → 10</div>
-                            <div style="color: var(--warm-gray); font-weight: 600;">Score Improvement</div>
-                        </div>
-                        <div style="background: rgba(123, 160, 152, 0.1); padding: 1rem; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 700; color: var(--sage); margin-bottom: 0.5rem;">55%</div>
-                            <div style="color: var(--warm-gray); font-weight: 600;">Symptom Reduction</div>
-                        </div>
-                        <div style="background: rgba(123, 160, 152, 0.1); padding: 1rem; border-radius: 12px; text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 700; color: var(--sage-dark); margin-bottom: 0.5rem;">7</div>
-                            <div style="color: var(--warm-gray); font-weight: 600;">Weeks of Progress</div>
-                        </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <span>Completely free to use</span>
                     </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <span>Self-paced learning</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✅</span>
+                        <span>Proven to reduce depression symptoms</span>
+                    </div>
+                </div>
+                
+                <a href="https://moodgym.com.au" target="_blank" rel="noopener noreferrer" class="resource-link">
+                    Visit MoodGYM
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <!-- PHQ-9 Tracking Section -->
+            <div class="phq9-section">
+                <div class="resource-header">
+                    <div class="resource-icon">📊</div>
+                    <h2 class="resource-title">Track Your Mood with PHQ-9</h2>
+                </div>
+                
+                <div class="resource-description">
+                    <p>The PHQ-9 is a validated depression screening tool used by healthcare providers worldwide. Track your symptoms weekly to monitor your progress and share results with your care team.</p>
+                </div>
+                
+                <div class="phq9-grid">
+                    <div class="phq9-item">
+                        <div class="phq9-score">0-4</div>
+                        <div class="phq9-label">Minimal Depression</div>
+                        <div class="phq9-description">Normal mood, no treatment needed</div>
+                    </div>
+                    <div class="phq9-item">
+                        <div class="phq9-score">5-9</div>
+                        <div class="phq9-label">Mild Depression</div>
+                        <div class="phq9-description">Watch and wait, consider CBT</div>
+                    </div>
+                    <div class="phq9-item">
+                        <div class="phq9-score">10-14</div>
+                        <div class="phq9-label">Moderate Depression</div>
+                        <div class="phq9-description">Treatment recommended</div>
+                    </div>
+                    <div class="phq9-item">
+                        <div class="phq9-score">15-19</div>
+                        <div class="phq9-label">Moderately Severe</div>
+                        <div class="phq9-description">Treatment strongly recommended</div>
+                    </div>
+                    <div class="phq9-item">
+                        <div class="phq9-score">20-27</div>
+                        <div class="phq9-label">Severe Depression</div>
+                        <div class="phq9-description">Immediate treatment needed</div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <a href="https://www.phqscreeners.com/select-screener/18" target="_blank" rel="noopener noreferrer" class="resource-link">
+                        Take PHQ-9 Assessment
+                        <span class="arrow">→</span>
+                    </a>
                 </div>
             </div>
 
-            <!-- CBT Apps & Resources -->
+            <!-- Additional Resources -->
             <div class="resource-card">
                 <div class="resource-header">
                     <div class="resource-icon">🧠</div>
-                    <h2 class="resource-title">CBT Apps & Mental Health Tools</h2>
+                    <h2 class="resource-title">Additional Mental Health Resources</h2>
                 </div>
                 
                 <div class="resource-description">
-                    <p>Enhance your treatment with these evidence-based apps and resources:</p>
+                    <p>Explore these trusted resources for additional support and education:</p>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                    <!-- MoodGYM -->
-                    <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(44, 95, 124, 0.1); border-left: 4px solid #22c55e;">
-                        <h4 style="color: var(--ocean-blue); margin-bottom: 0.5rem;">🌱 MoodGYM</h4>
-                        <p style="color: var(--warm-gray); font-size: 0.9375rem; margin-bottom: 1rem;">Free online CBT program with interactive exercises and mood tracking.</p>
-                        <a href="https://moodgym.com.au" target="_blank" rel="noopener noreferrer" style="color: #22c55e; font-weight: 600; text-decoration: none;">Visit MoodGYM →</a>
+                <div class="resource-benefits">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">📚</span>
+                        <span><strong>NIMH:</strong> National Institute of Mental Health resources</span>
                     </div>
-                    
-                    <!-- Woebot -->
-                    <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(44, 95, 124, 0.1); border-left: 4px solid #8b5cf6;">
-                        <h4 style="color: var(--ocean-blue); margin-bottom: 0.5rem;">🤖 Woebot</h4>
-                        <p style="color: var(--warm-gray); font-size: 0.9375rem; margin-bottom: 1rem;">AI-powered CBT chatbot for daily mood support and cognitive restructuring.</p>
-                        <a href="https://woebot.io" target="_blank" rel="noopener noreferrer" style="color: #8b5cf6; font-weight: 600; text-decoration: none;">Try Woebot →</a>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎧</span>
+                        <span><strong>Headspace:</strong> Meditation and mindfulness app</span>
                     </div>
-                    
-                    <!-- Headspace -->
-                    <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(44, 95, 124, 0.1); border-left: 4px solid #06b6d4;">
-                        <h4 style="color: var(--ocean-blue); margin-bottom: 0.5rem;">🎧 Headspace</h4>
-                        <p style="color: var(--warm-gray); font-size: 0.9375rem; margin-bottom: 1rem;">Meditation and mindfulness app with guided sessions for stress and anxiety.</p>
-                        <a href="https://www.headspace.com" target="_blank" rel="noopener noreferrer" style="color: #06b6d4; font-weight: 600; text-decoration: none;">Download Headspace →</a>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">📱</span>
+                        <span><strong>Calm:</strong> Sleep and relaxation app</span>
                     </div>
-                    
-                    <!-- Calm -->
-                    <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(44, 95, 124, 0.1); border-left: 4px solid #ec4899;">
-                        <h4 style="color: var(--ocean-blue); margin-bottom: 0.5rem;">😌 Calm</h4>
-                        <p style="color: var(--warm-gray); font-size: 0.9375rem; margin-bottom: 1rem;">Sleep stories, meditation, and relaxation tools for better mental health.</p>
-                        <a href="https://www.calm.com" target="_blank" rel="noopener noreferrer" style="color: #ec4899; font-weight: 600; text-decoration: none;">Download Calm →</a>
-                    </div>
-                    
-                    <!-- NIMH -->
-                    <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(44, 95, 124, 0.1); border-left: 4px solid #f97316;">
-                        <h4 style="color: var(--ocean-blue); margin-bottom: 0.5rem;">📚 NIMH Resources</h4>
-                        <p style="color: var(--warm-gray); font-size: 0.9375rem; margin-bottom: 1rem;">National Institute of Mental Health - trusted information and research.</p>
-                        <a href="https://www.nimh.nih.gov" target="_blank" rel="noopener noreferrer" style="color: #f97316; font-weight: 600; text-decoration: none;">Visit NIMH →</a>
-                    </div>
-                    
-                    <!-- Exercise -->
-                    <div style="background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(44, 95, 124, 0.1); border-left: 4px solid #22c55e;">
-                        <h4 style="color: var(--ocean-blue); margin-bottom: 0.5rem;">🏃‍♀️ Exercise</h4>
-                        <p style="color: var(--warm-gray); font-size: 0.9375rem; margin-bottom: 1rem;">Regular physical activity is one of the most effective natural antidepressants.</p>
-                        <span style="color: #22c55e; font-weight: 600;">Start with 20 minutes daily</span>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🏃‍♀️</span>
+                        <span><strong>Exercise:</strong> Regular physical activity for mood improvement</span>
                     </div>
                 </div>
             </div>
