@@ -44,12 +44,6 @@
         <priority>0.9</priority>
     </url>
     
-    <!-- PHQ-9 Tracker Page -->
-    <url>
-        <loc>https://manisahni.github.io/moodpath-md/phq9-tracker.html</loc>
-        <lastmod>2024-12-30</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
     
     <!-- Depression Treatment Page -->
