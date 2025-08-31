@@ -172,13 +172,16 @@ p {
     color: white;
     padding: 14px 28px;
     font-size: 1rem;
+    font-weight: 600;
     box-shadow: 0 2px 8px rgba(44, 95, 124, 0.15);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:hover {
     background: var(--ocean-blue-dark);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(44, 95, 124, 0.2);
+    color: white;
 }
 
 .btn-secondary {
