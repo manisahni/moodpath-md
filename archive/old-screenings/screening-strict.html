@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment - MoodPath MD</title>
+    <meta name="description" content="Confidential mental health assessment to determine if our services are right for you.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/clinical-warmth.css?v=9">
+    
+    <style>
+        /* Screening Specific Styles */
+        .screening-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            min-height: 60vh;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 3rem;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: rgba(44, 95, 124, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--ocean-blue);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .progress-text {
+            font-size: 0.875rem;
+            color: var(--warm-gray);
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        
+        /* Question Container */
+        .question-container {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(44, 95, 124, 0.1);
+            border: 1px solid rgba(44, 95, 124, 0.08);
+        }
+        
+        .question-number {
+            font-size: 0.875rem;
+            color: var(--warm-gray);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .question-text {
+            font-size: 1.25rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .question-subtext {
+            font-size: 0.875rem;
+            color: var(--warm-gray);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        /* Answer Options */
+        .answer-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .answer-option {
+            padding: 1.5rem;
+            background: var(--cream);
+            border: 2px solid rgba(44, 95, 124, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            color: var(--charcoal);
+            text-align: left;
+            display: block;
+            width: 100%;
+        }
+        
+        .answer-option:hover {
+            border-color: var(--ocean-blue);
+            background: rgba(44, 95, 124, 0.02);
+            transform: translateX(4px);
+        }
+        
+        .answer-option.selected {
+            border-color: var(--ocean-blue);
+            background: rgba(44, 95, 124, 0.05);
+        }
+        
+        /* Checkbox Group */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--cream);
+            border: 2px solid rgba(44, 95, 124, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .checkbox-item:hover {
+            border-color: var(--ocean-blue);
+            transform: translateX(4px);
+        }
+        
+        .checkbox-item.selected {
+            border-color: var(--ocean-blue);
+            background: rgba(44, 95, 124, 0.05);
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            display: none;
+        }
+        
+        .checkbox-item label {
+            cursor: pointer;
+            width: 100%;
+            margin: 0;
+            color: var(--charcoal);
+        }
+        
+        /* Navigation Buttons */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(44, 95, 124, 0.2);
+            border-radius: 50px;
+            color: var(--warm-gray);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+        
+        .nav-btn:hover {
+            border-color: var(--warm-gray);
+            color: var(--charcoal);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .nav-btn.primary {
+            background: var(--ocean-blue);
+            color: white;
+            border-color: var(--ocean-blue);
+        }
+        
+        .nav-btn.primary:hover {
+            background: var(--ocean-blue-dark);
+            border-color: var(--ocean-blue-dark);
+        }
+        
+        /* Results Section */
+        .results-container {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(44, 95, 124, 0.1);
+        }
+        
+        .results-container h2 {
+            color: var(--ocean-blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        .results-container p {
+            color: var(--warm-gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .results-email {
+            font-size: 1.125rem;
+            color: var(--ocean-blue);
+            font-weight: 500;
+            margin: 1.5rem 0;
+        }
+        
+        /* Hidden by default */
+        .question {
+            display: none;
+        }
+        
+        .question.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(44, 95, 124, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--ocean-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none;">
+                        <span class="logo-text">MoodPath MD</span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="screening.html" class="btn btn-primary">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="padding: calc(var(--space-2xl) + 80px) 0 var(--space-lg);">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Mental Health Assessment</h1>
+                <p class="subtitle">
+                    A brief, confidential screening to determine if our focused treatment approach is right for you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screening Form -->
+    <section>
+        <div class="container">
+            <div class="screening-container">
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar" style="width: 10%;"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">Question 1 of 10</div>
+                </div>
+
+                <!-- Questions Container -->
+                <div id="questionsContainer">
+                    <!-- Question 1: Safety -->
+                    <div class="question active" data-question="1">
+                        <div class="question-container">
+                            <div class="question-number">Question 1</div>
+                            <div class="question-text">Are you currently having thoughts of ending your life or harming yourself?</div>
+                            <div class="answer-options">
+                                <button class="answer-option" onclick="selectAnswer(this, 'safety', 'no', event)">No</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'safety', 'yes', event)">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2: Current Medications -->
+                    <div class="question" data-question="2">
+                        <div class="question-container">
+                            <div class="question-number">Question 2</div>
+                            <div class="question-text">Are you currently taking any of these medications?</div>
+                            <div class="question-subtext">Check all that apply</div>
+                            <div class="answer-options">
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_meds', 'benzos', event)">
+                                        <input type="checkbox" name="current_meds" value="benzos" id="meds-benzos">
+                                        <label for="meds-benzos">Benzodiazepines (Xanax, Ativan, Klonopin, Valium)</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_meds', 'stimulants', event)">
+                                        <input type="checkbox" name="current_meds" value="stimulants" id="meds-stimulants">
+                                        <label for="meds-stimulants">Stimulants (Adderall, Ritalin, Vyvanse)</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_meds', 'opioids', event)">
+                                        <input type="checkbox" name="current_meds" value="opioids" id="meds-opioids">
+                                        <label for="meds-opioids">Opioid pain medications</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_meds', 'sleep', event)">
+                                        <input type="checkbox" name="current_meds" value="sleep" id="meds-sleep">
+                                        <label for="meds-sleep">Prescription sleep medications (Ambien, Lunesta)</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_meds', 'mood', event)">
+                                        <input type="checkbox" name="current_meds" value="mood" id="meds-mood">
+                                        <label for="meds-mood">Mood stabilizers (Lithium, Depakote, Lamictal)</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_meds', 'antipsychotic', event)">
+                                        <input type="checkbox" name="current_meds" value="antipsychotic" id="meds-antipsychotic">
+                                        <label for="meds-antipsychotic">Antipsychotics (Abilify, Seroquel, Risperdal)</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_meds', 'none', event)">
+                                        <input type="checkbox" name="current_meds" value="none" id="meds-none">
+                                        <label for="meds-none">None of these</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3: Substance Use -->
+                    <div class="question" data-question="3">
+                        <div class="question-container">
+                            <div class="question-number">Question 3</div>
+                            <div class="question-text">In the past 6 months, have you:</div>
+                            <div class="answer-options">
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'substance', 'alcohol', event)">
+                                        <input type="checkbox" name="substance" value="alcohol" id="substance-alcohol">
+                                        <label for="substance-alcohol">Had 4+ drinks in a single day more than once</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'substance', 'cannabis', event)">
+                                        <input type="checkbox" name="substance" value="cannabis" id="substance-cannabis">
+                                        <label for="substance-cannabis">Used cannabis more than 3 times per week</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'substance', 'drugs', event)">
+                                        <input type="checkbox" name="substance" value="drugs" id="substance-drugs">
+                                        <label for="substance-drugs">Used recreational drugs</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'substance', 'treatment', event)">
+                                        <input type="checkbox" name="substance" value="treatment" id="substance-treatment">
+                                        <label for="substance-treatment">Been in substance abuse treatment</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'substance', 'none', event)">
+                                        <input type="checkbox" name="substance" value="none" id="substance-none">
+                                        <label for="substance-none">None of these apply</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4: Medical Conditions -->
+                    <div class="question" data-question="4">
+                        <div class="question-container">
+                            <div class="question-number">Question 4</div>
+                            <div class="question-text">Do you have any of these medical conditions?</div>
+                            <div class="answer-options">
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'medical', 'diabetes', event)">
+                                        <input type="checkbox" name="medical" value="diabetes" id="medical-diabetes">
+                                        <label for="medical-diabetes">Diabetes</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'medical', 'heart', event)">
+                                        <input type="checkbox" name="medical" value="heart" id="medical-heart">
+                                        <label for="medical-heart">Heart disease or high blood pressure</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'medical', 'thyroid', event)">
+                                        <input type="checkbox" name="medical" value="thyroid" id="medical-thyroid">
+                                        <label for="medical-thyroid">Thyroid disorder</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'medical', 'liver', event)">
+                                        <input type="checkbox" name="medical" value="liver" id="medical-liver">
+                                        <label for="medical-liver">Liver or kidney disease</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'medical', 'seizure', event)">
+                                        <input type="checkbox" name="medical" value="seizure" id="medical-seizure">
+                                        <label for="medical-seizure">Seizure disorder or epilepsy</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'medical', 'pregnant', event)">
+                                        <input type="checkbox" name="medical" value="pregnant" id="medical-pregnant">
+                                        <label for="medical-pregnant">Pregnant or breastfeeding</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'medical', 'chronic_pain', event)">
+                                        <input type="checkbox" name="medical" value="chronic_pain" id="medical-chronic-pain">
+                                        <label for="medical-chronic-pain">Chronic pain requiring daily management</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'medical', 'none', event)">
+                                        <input type="checkbox" name="medical" value="none" id="medical-none">
+                                        <label for="medical-none">None of these</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 5: Psychiatric History -->
+                    <div class="question" data-question="5">
+                        <div class="question-container">
+                            <div class="question-number">Question 5</div>
+                            <div class="question-text">Have you ever:</div>
+                            <div class="answer-options">
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'psych_history', 'hospitalized', event)">
+                                        <input type="checkbox" name="psych_history" value="hospitalized" id="history-hospitalized">
+                                        <label for="history-hospitalized">Been hospitalized for mental health reasons</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'psych_history', 'mania', event)">
+                                        <input type="checkbox" name="psych_history" value="mania" id="history-mania">
+                                        <label for="history-mania">Had a manic or hypomanic episode</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'psych_history', 'psychosis', event)">
+                                        <input type="checkbox" name="psych_history" value="psychosis" id="history-psychosis">
+                                        <label for="history-psychosis">Experienced psychosis or hallucinations</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'psych_history', 'suicide_attempt', event)">
+                                        <input type="checkbox" name="psych_history" value="suicide_attempt" id="history-attempt">
+                                        <label for="history-attempt">Attempted suicide</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'psych_history', 'eating_disorder', event)">
+                                        <input type="checkbox" name="psych_history" value="eating_disorder" id="history-eating">
+                                        <label for="history-eating">Been treated for an eating disorder</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'psych_history', 'none', event)">
+                                        <input type="checkbox" name="psych_history" value="none" id="history-none">
+                                        <label for="history-none">None of these</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 6: Current Treatment -->
+                    <div class="question" data-question="6">
+                        <div class="question-container">
+                            <div class="question-number">Question 6</div>
+                            <div class="question-text">Are you currently:</div>
+                            <div class="answer-options">
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_treatment', 'psychiatrist', event)">
+                                        <input type="checkbox" name="current_treatment" value="psychiatrist" id="treatment-psychiatrist">
+                                        <label for="treatment-psychiatrist">Seeing a psychiatrist</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_treatment', 'therapist', event)">
+                                        <input type="checkbox" name="current_treatment" value="therapist" id="treatment-therapist">
+                                        <label for="treatment-therapist">In weekly psychotherapy</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_treatment', 'intensive', event)">
+                                        <input type="checkbox" name="current_treatment" value="intensive" id="treatment-intensive">
+                                        <label for="treatment-intensive">In intensive outpatient or partial hospitalization</label>
+                                    </div>
+                                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'current_treatment', 'none', event)">
+                                        <input type="checkbox" name="current_treatment" value="none" id="treatment-none">
+                                        <label for="treatment-none">None of these</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 7: Symptoms -->
+                    <div class="question" data-question="7">
+                        <div class="question-container">
+                            <div class="question-number">Question 7</div>
+                            <div class="question-text">Which best describes your primary concern?</div>
+                            <div class="question-subtext">We specialize in treating straightforward depression and anxiety</div>
+                            <div class="answer-options">
+                                <button class="answer-option" onclick="selectAnswer(this, 'symptoms', 'mild_depression', event)">Feeling down, sad, or hopeless most days</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'symptoms', 'mild_anxiety', event)">Excessive worry or anxiety affecting daily life</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'symptoms', 'both', event)">Both depression and anxiety symptoms</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'symptoms', 'complex', event)">Multiple complex mental health issues</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'symptoms', 'other', event)">Other mental health concerns</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 8: Previous Medications -->
+                    <div class="question" data-question="8">
+                        <div class="question-container">
+                            <div class="question-number">Question 8</div>
+                            <div class="question-text">How many antidepressants have you tried in the past?</div>
+                            <div class="answer-options">
+                                <button class="answer-option" onclick="selectAnswer(this, 'med_history', 'none', event)">This would be my first</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'med_history', '1-2', event)">1-2 medications</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'med_history', '3-4', event)">3-4 medications</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'med_history', '5+', event)">5 or more medications</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 9: Demographics -->
+                    <div class="question" data-question="9">
+                        <div class="question-container">
+                            <div class="question-number">Question 9</div>
+                            <div class="question-text">Your age:</div>
+                            <div class="answer-options">
+                                <button class="answer-option" onclick="selectAnswer(this, 'age', 'under18', event)">Under 18</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'age', '18-25', event)">18-25</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'age', '26-40', event)">26-40</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'age', '41-65', event)">41-65</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'age', 'over65', event)">Over 65</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 10: Expectations -->
+                    <div class="question" data-question="10">
+                        <div class="question-container">
+                            <div class="question-number">Question 10</div>
+                            <div class="question-text">What are you looking for in treatment?</div>
+                            <div class="answer-options">
+                                <button class="answer-option" onclick="selectAnswer(this, 'expectations', 'simple', event)">Simple medication management for depression/anxiety</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'expectations', 'therapy', event)">Primarily therapy/counseling</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'expectations', 'complex', event)">Complex psychiatric care</button>
+                                <button class="answer-option" onclick="selectAnswer(this, 'expectations', 'unsure', event)">Not sure what I need</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="results-container" id="resultsContainer">
+                    <h2 id="resultTitle">Assessment Complete</h2>
+                    <p id="resultMessage">Thank you for completing the assessment.</p>
+                    <p id="resultSubMessage">Our board-certified physician specializes in treating mild to moderate depression and anxiety through personalized, online care.</p>
+                    <div class="results-email" id="resultEmail" style="display: none;">scheduling@moodpathmd.com</div>
+                    <a href="#" class="btn btn-primary" id="resultButton" style="margin-top: 1.5rem;">Next Steps</a>
+                </div>
+
+                <!-- Navigation -->
+                <div class="navigation" id="navigation">
+                    <button class="nav-btn" onclick="previousQuestion()" id="prevBtn" disabled>Previous</button>
+                    <button class="nav-btn primary" onclick="nextQuestion()" id="nextBtn" style="display: none;">Next</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="text-align: center; color: var(--warm-gray); font-size: 0.875rem;">
+                If you're in crisis, please call 988 immediately.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ================================================
+        // CONFIGURATION
+        // ================================================
+        const CONFIG = {
+            googleScriptUrl: 'YOUR_GOOGLE_SCRIPT_URL_HERE',
+            practiceEmail: 'scheduling@moodpathmd.com',
+            practicePhone: '(555) 555-5555',
+            launchDate: 'January 2025',
+            statesLicensed: ['CA', 'NY', 'TX', 'FL', 'IL', 'PA', 'AZ']
+        };
+
+        // ================================================
+        // GLOBAL VARIABLES
+        // ================================================
+        let currentQuestion = 1;
+        const totalQuestions = 10;
+        const formData = {
+            safety: null,
+            current_meds: [],
+            substance: [],
+            medical: [],
+            psych_history: [],
+            current_treatment: [],
+            symptoms: null,
+            med_history: null,
+            age: null,
+            expectations: null
+        };
+
+        // ================================================
+        // STRICT SCREENING EVALUATION LOGIC
+        // ================================================
+        class StrictScreeningEvaluator {
+            constructor(data) {
+                this.data = data;
+                this.result = this.evaluate();
+            }
+            
+            evaluate() {
+                // Safety check - highest priority
+                if (this.data.safety === 'yes') {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Safety risk',
+                        title: 'Your Safety is Our Priority',
+                        message: 'Based on your responses, we strongly recommend immediate support.',
+                        subMessage: 'Please call 988 for the Suicide & Crisis Lifeline or visit your nearest emergency room.',
+                        buttonText: 'Call 988 Now',
+                        buttonAction: 'tel:988'
+                    };
+                }
+                
+                // Current controlled substances - automatic rejection
+                const current_meds = this.data.current_meds || [];
+                if (current_meds.includes('benzos') || 
+                    current_meds.includes('stimulants') || 
+                    current_meds.includes('opioids') ||
+                    current_meds.includes('sleep') ||
+                    current_meds.includes('mood') ||
+                    current_meds.includes('antipsychotic')) {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Complex medication management',
+                        title: 'Specialized Care Required',
+                        message: 'Your current medications require specialized psychiatric management.',
+                        subMessage: 'For your safety, please continue with a psychiatrist who can manage these medications alongside any new treatments.',
+                        buttonText: 'Find a Psychiatrist',
+                        buttonAction: 'https://www.psychologytoday.com/us/psychiatrists'
+                    };
+                }
+                
+                // Substance use check
+                const substance = this.data.substance || [];
+                if (substance.length > 0 && !substance.includes('none')) {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Substance use concerns',
+                        title: 'Comprehensive Care Needed',
+                        message: 'Substance use requires specialized treatment coordination.',
+                        subMessage: 'Please seek care from a provider who can address both mental health and substance use concerns together.',
+                        buttonText: 'Find Specialized Care',
+                        buttonAction: 'https://www.samhsa.gov/find-help/national-helpline'
+                    };
+                }
+                
+                // Medical complexity check
+                const medical = this.data.medical || [];
+                if (medical.length > 0 && !medical.includes('none')) {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Medical complexity',
+                        title: 'Medical Coordination Required',
+                        message: 'Your medical conditions require close coordination with your healthcare team.',
+                        subMessage: 'Please consult with your primary care physician or a psychiatrist who can safely manage both your medical and mental health needs.',
+                        buttonText: 'Find Integrated Care',
+                        buttonAction: 'https://www.zocdoc.com'
+                    };
+                }
+                
+                // Psychiatric history check
+                const psych_history = this.data.psych_history || [];
+                if (psych_history.length > 0 && !psych_history.includes('none')) {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Complex psychiatric history',
+                        title: 'Specialized Psychiatric Care Recommended',
+                        message: 'Your psychiatric history indicates you would benefit from comprehensive psychiatric care.',
+                        subMessage: 'A psychiatrist can provide the level of monitoring and expertise needed for your situation.',
+                        buttonText: 'Find a Psychiatrist',
+                        buttonAction: 'https://www.psychologytoday.com/us/psychiatrists'
+                    };
+                }
+                
+                // Current treatment check
+                const current_treatment = this.data.current_treatment || [];
+                if (current_treatment.includes('psychiatrist') || 
+                    current_treatment.includes('intensive')) {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Already in specialized care',
+                        title: 'Continue Current Treatment',
+                        message: 'You are already receiving the appropriate level of care.',
+                        subMessage: 'Please continue working with your current treatment team for the best outcomes.',
+                        buttonText: 'Return to Homepage',
+                        buttonAction: 'index.html'
+                    };
+                }
+                
+                // Symptoms check - only accept straightforward cases
+                if (this.data.symptoms === 'complex' || this.data.symptoms === 'other') {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Complex symptoms',
+                        title: 'Specialized Assessment Needed',
+                        message: 'Your symptoms require a comprehensive psychiatric evaluation.',
+                        subMessage: 'A psychiatrist can properly diagnose and treat complex mental health conditions.',
+                        buttonText: 'Find a Psychiatrist',
+                        buttonAction: 'https://www.psychologytoday.com/us/psychiatrists'
+                    };
+                }
+                
+                // Treatment resistance check
+                if (this.data.med_history === '3-4' || this.data.med_history === '5+') {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Treatment resistance',
+                        title: 'Advanced Treatment Options Available',
+                        message: 'Given your medication history, you may benefit from specialized treatment approaches.',
+                        subMessage: 'A psychiatrist can offer advanced options like genetic testing, combination therapy, or alternative treatments.',
+                        buttonText: 'Find Specialized Care',
+                        buttonAction: 'https://www.psychologytoday.com/us/psychiatrists'
+                    };
+                }
+                
+                // Age check
+                if (this.data.age === 'under18' || this.data.age === 'over65') {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Age outside range',
+                        title: 'Age-Specific Care Needed',
+                        message: this.data.age === 'under18' ? 
+                            'We currently treat adults 18 and older.' : 
+                            'Patients over 65 benefit from specialized geriatric care.',
+                        subMessage: 'Please seek care from a provider specializing in your age group.',
+                        buttonText: 'Find Appropriate Care',
+                        buttonAction: 'https://www.psychologytoday.com'
+                    };
+                }
+                
+                // Expectations check
+                if (this.data.expectations !== 'simple') {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Mismatched expectations',
+                        title: 'Different Treatment Approach Needed',
+                        message: this.data.expectations === 'therapy' ? 
+                            'We focus on medication management, not therapy.' :
+                            'We specialize in straightforward medication management only.',
+                        subMessage: this.data.expectations === 'therapy' ?
+                            'Please seek a therapist or counselor for your needs.' :
+                            'Please consult with a psychiatrist for comprehensive care.',
+                        buttonText: 'Find Appropriate Care',
+                        buttonAction: 'https://www.psychologytoday.com'
+                    };
+                }
+                
+                // APPROVED - Perfect fit for SSRI/SNRI management
+                return {
+                    status: 'APPROVED',
+                    reason: 'Ideal candidate for SSRI/SNRI treatment',
+                    title: "You're a Perfect Fit!",
+                    message: 'Based on your responses, our focused treatment approach is ideal for you.',
+                    subMessage: `We specialize in SSRI/SNRI management for straightforward depression and anxiety. Email us to get started:`,
+                    buttonText: 'View Pricing',
+                    buttonAction: 'pricing.html',
+                    showEmail: true
+                };
+            }
+        }
+
+        // ================================================
+        // UI FUNCTIONS
+        // ================================================
+        function selectAnswer(button, field, value, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            console.log(`selectAnswer called: ${field} = ${value}`);
+            
+            // Remove previous selection
+            button.parentElement.querySelectorAll('.answer-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selection
+            button.classList.add('selected');
+            formData[field] = value;
+            
+            // Show next button
+            const nextBtn = document.getElementById('nextBtn');
+            if (nextBtn) {
+                nextBtn.style.display = 'block';
+            }
+        }
+
+        function toggleCheckbox(element, field, value, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            const input = element.querySelector('input');
+            const isChecked = !input.checked;
+            
+            console.log(`Toggling checkbox: field=${field}, value=${value}, checked=${isChecked}`);
+            
+            // Handle "none" option
+            if (value === 'none' && isChecked) {
+                // Uncheck all others
+                document.querySelectorAll(`[name="${field}"]`).forEach(cb => {
+                    if (cb.value !== 'none') {
+                        cb.checked = false;
+                        cb.parentElement.classList.remove('selected');
+                    }
+                });
+                formData[field] = ['none'];
+            } else if (value !== 'none' && isChecked) {
+                // Uncheck "none" if selecting others
+                const noneCheckbox = document.querySelector(`[name="${field}"][value="none"]`);
+                if (noneCheckbox) {
+                    noneCheckbox.checked = false;
+                    noneCheckbox.parentElement.classList.remove('selected');
+                }
+                
+                // Update array
+                if (!formData[field]) formData[field] = [];
+                formData[field] = formData[field].filter(v => v !== 'none');
+                if (!formData[field].includes(value)) {
+                    formData[field].push(value);
+                }
+            } else {
+                // Remove from array
+                if (formData[field]) {
+                    formData[field] = formData[field].filter(v => v !== value);
+                }
+            }
+            
+            // Toggle visual state
+            input.checked = isChecked;
+            element.classList.toggle('selected', isChecked);
+            
+            // Show next button if at least one selected
+            const hasSelection = formData[field] && formData[field].length > 0;
+            document.getElementById('nextBtn').style.display = hasSelection ? 'block' : 'none';
+        }
+
+        function nextQuestion() {
+            console.log(`Moving from question ${currentQuestion} to ${currentQuestion + 1}`);
+            
+            if (currentQuestion < totalQuestions) {
+                // Hide current question
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+                
+                // Show next question
+                currentQuestion++;
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+                
+                // Update progress
+                updateProgress();
+                
+                // Enable previous button
+                document.getElementById('prevBtn').disabled = false;
+                
+                // Hide next button for new question
+                document.getElementById('nextBtn').style.display = 'none';
+                
+                // Check if answer exists for this question
+                checkExistingAnswer();
+                
+                // Update button text for last question
+                if (currentQuestion === totalQuestions) {
+                    document.getElementById('nextBtn').textContent = 'Submit';
+                }
+            } else {
+                // Submit screening
+                submitScreening();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 1) {
+                // Hide current question
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+                
+                // Show previous question
+                currentQuestion--;
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+                
+                // Update progress
+                updateProgress();
+                
+                // Always show next button when going back
+                document.getElementById('nextBtn').style.display = 'block';
+                
+                // Reset button text
+                document.getElementById('nextBtn').textContent = 'Next';
+                
+                // Disable previous button if at start
+                if (currentQuestion === 1) {
+                    document.getElementById('prevBtn').disabled = true;
+                }
+            }
+        }
+
+        function checkExistingAnswer() {
+            // Check if current question has been answered
+            const fields = ['safety', 'current_meds', 'substance', 'medical', 'psych_history', 
+                          'current_treatment', 'symptoms', 'med_history', 'age', 'expectations'];
+            const field = fields[currentQuestion - 1];
+            
+            if (formData[field]) {
+                if (Array.isArray(formData[field]) && formData[field].length > 0) {
+                    document.getElementById('nextBtn').style.display = 'block';
+                } else if (!Array.isArray(formData[field])) {
+                    document.getElementById('nextBtn').style.display = 'block';
+                }
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+        }
+
+        function submitScreening() {
+            // Show loading state
+            document.getElementById('nextBtn').innerHTML = '<span class="loading"></span>';
+            document.getElementById('nextBtn').disabled = true;
+            
+            // Evaluate screening with strict criteria
+            const evaluator = new StrictScreeningEvaluator(formData);
+            const evaluation = evaluator.result;
+            
+            console.log('Evaluation result:', evaluation);
+            
+            // Add metadata
+            const submissionData = {
+                ...formData,
+                timestamp: new Date().toISOString(),
+                evaluationStatus: evaluation.status,
+                evaluationReason: evaluation.reason,
+                userAgent: navigator.userAgent,
+                referrer: document.referrer || 'Direct'
+            };
+            
+            // Submit to Google Sheets if configured
+            if (CONFIG.googleScriptUrl && CONFIG.googleScriptUrl !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                fetch(CONFIG.googleScriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(submissionData)
+                }).catch(error => {
+                    console.error('Submission error:', error);
+                });
+            }
+            
+            // Show results
+            showResults(evaluation);
+        }
+
+        function showResults(evaluation) {
+            // Hide questions and navigation
+            document.getElementById('questionsContainer').style.display = 'none';
+            document.getElementById('navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            
+            // Update results content
+            document.getElementById('resultTitle').textContent = evaluation.title;
+            document.getElementById('resultMessage').textContent = evaluation.message;
+            document.getElementById('resultSubMessage').textContent = evaluation.subMessage;
+            
+            // Handle email display
+            if (evaluation.showEmail) {
+                document.getElementById('resultEmail').style.display = 'block';
+                document.getElementById('resultEmail').textContent = CONFIG.practiceEmail;
+            } else {
+                document.getElementById('resultEmail').style.display = 'none';
+            }
+            
+            // Update button
+            const button = document.getElementById('resultButton');
+            button.textContent = evaluation.buttonText;
+            button.href = evaluation.buttonAction;
+            
+            // Show results
+            document.getElementById('resultsContainer').style.display = 'block';
+            
+            // Store in session if approved
+            if (evaluation.status === 'APPROVED') {
+                sessionStorage.setItem('screening_passed', 'true');
+                sessionStorage.setItem('screening_responses', JSON.stringify(formData));
+            }
+        }
+
+        // ================================================
+        // INITIALIZATION
+        // ================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing strict screening form...');
+            
+            // Show first question
+            document.querySelector('[data-question="1"]').classList.add('active');
+            
+            // Initialize progress
+            updateProgress();
+            
+            // Disable previous button initially
+            document.getElementById('prevBtn').disabled = true;
+            
+            // Hide next button initially
+            document.getElementById('nextBtn').style.display = 'none';
+            
+            console.log('Strict screening form initialized');
+        });
+    </script>
+</body>
+</html>

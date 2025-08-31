@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Screening - MoodPath MD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .console-log {
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Screening Form Test Suite</h1>
+    
+    <div class="test-section">
+        <h2>Console Output</h2>
+        <div id="console-output" class="console-log">
+            Console messages will appear here...
+        </div>
+        <button onclick="clearConsole()">Clear Console</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Navigation</h2>
+        <p>Open the screening page in a new tab and check the browser console for debug messages:</p>
+        <a href="screening.html" target="_blank">
+            <button>Open Screening Page</button>
+        </a>
+        
+        <h3>What to test:</h3>
+        <ol>
+            <li><strong>Question 1 (Yes/No buttons):</strong>
+                <ul>
+                    <li>Click "No" - Next button should appear</li>
+                    <li>Click "Yes" - Next button should remain visible</li>
+                    <li>Console should show: "selectAnswer called: safety, [value]"</li>
+                </ul>
+            </li>
+            
+            <li><strong>Question 2 (Checkboxes):</strong>
+                <ul>
+                    <li>Click any checkbox - should toggle without double-triggering</li>
+                    <li>Click "None of these" - should uncheck all others</li>
+                    <li>Click other options after "None" - should uncheck "None"</li>
+                    <li>Console should show checkbox state updates</li>
+                    <li>Next button should appear after any selection</li>
+                </ul>
+            </li>
+            
+            <li><strong>Question 3 (Multiple choice):</strong>
+                <ul>
+                    <li>Click any option - Next button should appear</li>
+                    <li>Console should show: "selectAnswer called: medications, [value]"</li>
+                </ul>
+            </li>
+            
+            <li><strong>Question 4 & 5 (More checkboxes):</strong>
+                <ul>
+                    <li>Same behavior as Question 2</li>
+                </ul>
+            </li>
+            
+            <li><strong>Question 6 (Age & State):</strong>
+                <ul>
+                    <li>Enter age - Next button should NOT appear yet</li>
+                    <li>Select state - Next button should appear if age is also filled</li>
+                </ul>
+            </li>
+            
+            <li><strong>Question 7 (Final question):</strong>
+                <ul>
+                    <li>Click any option - button should change to "Submit"</li>
+                    <li>Click Submit - should show results</li>
+                </ul>
+            </li>
+            
+            <li><strong>Navigation:</strong>
+                <ul>
+                    <li>Previous button should work on all questions except first</li>
+                    <li>Progress bar should update correctly</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>Expected Console Messages</h2>
+        <pre>
+Initializing screening form...
+Next button onclick: null  (expected on first load)
+Prev button onclick: null  (expected on first load)
+Screening form initialized successfully
+
+When clicking answers:
+selectAnswer called: safety, no
+Next button should be visible now
+
+When toggling checkboxes:
+Toggling checkbox: field=diagnosis, value=bipolar, will be checked=true
+Checkbox state updated: field=diagnosis, selections=["bipolar"], nextBtn visible=true
+
+When navigating:
+nextQuestion called, current: 1, total: 7
+        </pre>
+    </div>
+
+    <script>
+        // Capture console messages from the screening page
+        const consoleOutput = document.getElementById('console-output');
+        
+        function addToConsole(message, type = 'log') {
+            const entry = document.createElement('div');
+            entry.textContent = `[${type}] ${message}`;
+            entry.style.color = type === 'error' ? 'red' : 'black';
+            consoleOutput.appendChild(entry);
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+        
+        function clearConsole() {
+            consoleOutput.innerHTML = 'Console cleared.';
+        }
+        
+        // Override console methods for testing
+        const originalLog = console.log;
+        const originalError = console.error;
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToConsole(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToConsole(args.join(' '), 'error');
+        };
+        
+        addToConsole('Test page loaded. Open screening.html in a new tab to test.', 'log');
+    </script>
+</body>
+</html>
