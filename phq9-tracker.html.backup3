@@ -455,9 +455,7 @@
             <p style="color: #dc2626; font-size: 1rem; margin: 0.5rem 0 0 0;">Available 24/7 • Free • Confidential</p>
         </div>
         <p style="color: #dc2626; font-size: 0.875rem; margin: 0; opacity: 0.8;">This website is for non-emergency mental health care. For immediate crisis support, please call 988.</p>
-    </div>
-
-    <section class="tracker-hero">
+    </div>    <section class="tracker-hero">
         <div class="container">
             <h1>PHQ-9 Depression Tracker</h1>
             <p>Monitor your depression symptoms anonymously over time. Share results with your healthcare provider to track your progress.</p>
