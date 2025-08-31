@@ -37,6 +37,13 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
             margin-top: 3rem;
+            justify-items: center;
+        }
+        
+        .approach-grid .approach-card:last-child {
+            grid-column: 1 / -1;
+            max-width: 400px;
+            justify-self: center;
         }
         
         .approach-card {
@@ -88,6 +95,13 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            justify-items: center;
+        }
+        
+        .values-grid .value-card:last-child {
+            grid-column: 1 / -1;
+            max-width: 400px;
+            justify-self: center;
         }
         
         .value-card {
