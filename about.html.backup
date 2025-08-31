@@ -40,6 +40,11 @@
             justify-items: center;
         }
         
+        .approach-grid .approach-card:last-child {
+            grid-column: 1 / -1;
+            max-width: 400px;
+            justify-self: center;
+        }
         
         .approach-card {
             background: white;
