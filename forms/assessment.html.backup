@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mood Assessment - MoodPath MD</title>
-    <link rel="stylesheet" href="../css/clinical-warmth.css?v=7">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         .assessment-container {
             max-width: 800px;
@@ -22,7 +22,7 @@
         }
         
         .progress-bar {
-            background: var(--ocean-blue);
+            background: var(--teal);
             height: 100%;
             width: 0%;
             transition: width 0.3s ease;
@@ -55,7 +55,7 @@
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--ocean-blue-dark);
+            color: var(--navy);
         }
         
         .radio-options {
@@ -67,7 +67,7 @@
             display: flex;
             align-items: center;
             padding: 0.75rem;
-            background: var(--cream);
+            background: var(--light-gray);
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s;
@@ -83,7 +83,7 @@
         
         .radio-option.selected {
             background: rgba(42, 157, 143, 0.1);
-            border: 1px solid var(--ocean-blue);
+            border: 1px solid var(--teal);
         }
         
         .assessment-buttons {
@@ -102,7 +102,7 @@
         .score-display {
             font-size: 3rem;
             font-weight: 700;
-            color: var(--ocean-blue);
+            color: var(--teal);
             margin: 1rem 0;
         }
         
@@ -555,7 +555,7 @@
                     </p>
                     
                     <div style="background: white; padding: 1.5rem; border-radius: 10px; text-align: left; margin: 2rem 0;">
-                        <h4 style="color: var(--ocean-blue-dark); margin-bottom: 1rem;">What's Next?</h4>
+                        <h4 style="color: var(--navy); margin-bottom: 1rem;">What's Next?</h4>
                         <ol style="line-height: 1.8; margin-left: 1.5rem;">
                             <li>Schedule your initial consultation with Dr. Sahni</li>
                             <li>Complete pre-visit medical history forms</li>
