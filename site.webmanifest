@@ -1,0 +1,21 @@
+{
+    "name": "MoodPath MD - Online Depression Treatment",
+    "short_name": "MoodPath MD",
+    "description": "Online depression treatment from a board-certified internist with CBT expertise",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#F5F4F0",
+    "theme_color": "#2C5F7C",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

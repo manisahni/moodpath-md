@@ -52,4 +52,28 @@
         <priority>0.8</priority>
     </url>
     
+    <!-- Depression Treatment Page -->
+    <url>
+        <loc>https://manisahni.github.io/moodpath-md/#depression-treatment</loc>
+        <lastmod>2024-12-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Online Therapy Page -->
+    <url>
+        <loc>https://manisahni.github.io/moodpath-md/#online-therapy</loc>
+        <lastmod>2024-12-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- CBT Therapy Page -->
+    <url>
+        <loc>https://manisahni.github.io/moodpath-md/#cbt-therapy</loc>
+        <lastmod>2024-12-30</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
 </urlset>

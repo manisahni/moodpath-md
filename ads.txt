@@ -1,0 +1,3 @@
+# Ads.txt file for MoodPath MD
+# This file helps prevent unauthorized ad sales
+# No ad networks currently configured
