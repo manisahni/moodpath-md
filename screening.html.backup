@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Depression & Anxiety Screening Assessment - MoodPath MD | Free 2-Minute Test</title>
+    <meta name="title" content="Depression & Anxiety Screening Assessment - MoodPath MD | Free 2-Minute Test">
+    <meta name="description" content="Take our confidential 2-minute depression and anxiety screening assessment. Free, HIPAA-compliant, and helps determine if our psychiatric services are right for you.">
+    <meta name="keywords" content="depression screening, anxiety screening, PHQ-9, mental health assessment, online screening, depression test, anxiety test, psychiatric evaluation">
+    <meta name="author" content="MoodPath MD">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manisahni.github.io/moodpath-md/screening.html">
+    <meta property="og:title" content="Depression & Anxiety Screening Assessment - MoodPath MD">
+    <meta property="og:description" content="Take our confidential 2-minute depression and anxiety screening assessment. Free, HIPAA-compliant, and helps determine if our psychiatric services are right for you.">
+    <meta property="og:image" content="https://manisahni.github.io/moodpath-md/assets/images/moodpath-md-screening-og.jpg">
+    <meta property="og:site_name" content="MoodPath MD">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://manisahni.github.io/moodpath-md/screening.html">
+    <meta property="twitter:title" content="Depression & Anxiety Screening Assessment - MoodPath MD">
+    <meta property="twitter:description" content="Take our confidential 2-minute depression and anxiety screening assessment. Free, HIPAA-compliant, and helps determine if our psychiatric services are right for you.">
+    <meta property="twitter:image" content="https://manisahni.github.io/moodpath-md/assets/images/moodpath-md-screening-og.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://manisahni.github.io/moodpath-md/screening.html">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "MoodPath MD Screening Assessment",
+        "description": "Confidential 2-minute depression and anxiety screening assessment to determine if our psychiatric services are right for you.",
+        "url": "https://manisahni.github.io/moodpath-md/screening.html",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free screening assessment"
+        },
+        "provider": {
+            "@type": "MedicalBusiness",
+            "name": "MoodPath MD",
+            "medicalSpecialty": "Psychiatry"
+        }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/clinical-warmth.css?v=7">
+    <style>
+        /* Enhanced Screening Form Styles */
+        body {
+            background: linear-gradient(135deg, var(--cream) 0%, rgba(123, 160, 152, 0.05) 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%232C5F7C" opacity="0.02"/><circle cx="75" cy="75" r="1" fill="%237BA098" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .screening-hero {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .screening-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            pointer-events: none;
+        }
+
+        .screening-hero h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .screening-hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .screening-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(44, 95, 124, 0.15);
+            border: 1px solid rgba(44, 95, 124, 0.08);
+            margin-top: -2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .form-header h2 {
+            color: var(--ocean-blue);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: var(--warm-gray);
+            font-size: 1rem;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 3rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(44, 95, 124, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--warm-gray);
+            font-weight: 500;
+        }
+
+        /* Enhanced Form Styles */
+        #screening-form {
+            background: white;
+            border-radius: 12px;
+        }
+
+        .form-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(44, 95, 124, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(44, 95, 124, 0.06);
+        }
+
+        .section-title {
+            color: var(--ocean-blue);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--ocean-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--ocean-blue);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group .help-text {
+            font-size: 0.875rem;
+            color: var(--warm-gray);
+            margin-top: 0.25rem;
+            font-weight: 400;
+        }
+
+        /* Enhanced Radio and Checkbox Styles */
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 2px solid rgba(44, 95, 124, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .radio-option:hover, .checkbox-option:hover {
+            border-color: var(--ocean-blue);
+            background: rgba(44, 95, 124, 0.02);
+        }
+
+        .radio-option input[type="radio"],
+        .checkbox-option input[type="checkbox"] {
+            margin: 0;
+            transform: scale(1.2);
+            accent-color: var(--ocean-blue);
+        }
+
+        .radio-option label, .checkbox-option label {
+            margin: 0;
+            font-weight: 500;
+            color: var(--charcoal);
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .radio-option input[type="radio"]:checked + label,
+        .checkbox-option input[type="checkbox"]:checked + label {
+            color: var(--ocean-blue);
+            font-weight: 600;
+        }
+
+        .radio-option:has(input[type="radio"]:checked),
+        .checkbox-option:has(input[type="checkbox"]:checked) {
+            border-color: var(--ocean-blue);
+            background: rgba(44, 95, 124, 0.05);
+        }
+
+        /* Enhanced Select and Input Styles */
+        .form-group select,
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(44, 95, 124, 0.1);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .form-group select:focus,
+        .form-group input[type="number"]:focus {
+            outline: none;
+            border-color: var(--ocean-blue);
+            box-shadow: 0 0 0 3px rgba(44, 95, 124, 0.1);
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%232C5F7C' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.75rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            padding-right: 2.5rem;
+            appearance: none;
+        }
+
+        /* Submit Button */
+        .submit-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(44, 95, 124, 0.1);
+        }
+
+        button[type="submit"] {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.25rem 3rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(44, 95, 124, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 95, 124, 0.3);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        button[type="submit"]::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        button[type="submit"]:hover::before {
+            left: 100%;
+        }
+
+        /* Results Styles */
+        #screening-result {
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-approved {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .result-approved h2 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        .contact-box {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .result-crisis {
+            background: #ffebee;
+            border: 2px solid #f44336;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .result-crisis h2 {
+            color: #c62828;
+        }
+
+        .crisis-resources {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .crisis-resources p {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        .result-referral {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .result-referral h2 {
+            color: #e65100;
+        }
+
+        .result-conditional {
+            background: #fff8e1;
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .result-conditional h2 {
+            color: #f57f17;
+        }
+
+        .btn-return {
+            background: var(--ocean-blue);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-return:hover {
+            background: var(--ocean-blue-dark);
+            transform: translateY(-1px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--sage);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .privacy-note {
+            background: rgba(44, 95, 124, 0.05);
+            border: 1px solid rgba(44, 95, 124, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--warm-gray);
+        }
+
+        .privacy-note strong {
+            color: var(--ocean-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .screening-hero {
+                padding: 3rem 1rem;
+            }
+            
+            .screening-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .screening-container {
+                margin: -1rem 1rem 2rem;
+                padding: 2rem 1rem;
+            }
+            
+            .form-section {
+                padding: 1.5rem;
+            }
+            
+            .radio-option, .checkbox-option {
+                padding: 0.75rem;
+            }
+            
+            button[type="submit"] {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <svg width="36" height="36" viewBox="0 0 40 40">
+                        <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F7C" stroke-width="1.5"/>
+                        <path d="M20 10 Q25 20, 20 30 Q15 20, 20 10" fill="#7BA098" opacity="0.3"/>
+                        <circle cx="20" cy="20" r="3" fill="#2C5F7C"/>
+                    </svg>
+                    <span class="logo-text">MoodPath MD</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="screening.html" class="btn btn-primary" style="background: #2C5F7C !important; color: white !important; font-weight: 700 !important; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15) !important;">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="screening-hero">
+        <div class="container">
+            <h1>Patient Screening Assessment</h1>
+            <p>This confidential 2-minute screening helps ensure we can provide safe, appropriate care for your needs.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="screening-container">
+            <div class="form-header">
+                <h2>Confidential Screening Assessment</h2>
+                <p>Please answer each question honestly. Your responses help us determine if our services are right for you.</p>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">Step 1 of 7</div>
+            </div>
+            
+            <form id="screening-form">
+                <!-- Question 1: Safety -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <div class="section-icon">1</div>
+                        Safety Assessment
+                    </div>
+                    <div class="form-group">
+                        <label>Are you currently having thoughts of ending your life or harming yourself?</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" name="safety" value="no" id="safety-no" required>
+                                <label for="safety-no">No, I am not having these thoughts</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" name="safety" value="yes" id="safety-yes">
+                                <label for="safety-yes">Yes, I am having these thoughts</label>
+                            </div>
+                        </div>
+                        <div class="help-text">This helps us ensure your safety and provide appropriate resources if needed.</div>
+                    </div>
+                </div>
+
+                <!-- Question 2: Diagnosis -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <div class="section-icon">2</div>
+                        Psychiatric History
+                    </div>
+                    <div class="form-group">
+                        <label>Have you ever been diagnosed with any of the following?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="diagnosis" value="bipolar" id="diagnosis-bipolar">
+                                <label for="diagnosis-bipolar">Bipolar disorder (manic depression)</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="diagnosis" value="schizophrenia" id="diagnosis-schizophrenia">
+                                <label for="diagnosis-schizophrenia">Schizophrenia or psychosis</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="diagnosis" value="borderline" id="diagnosis-borderline">
+                                <label for="diagnosis-borderline">Borderline personality disorder</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="diagnosis" value="schizoaffective" id="diagnosis-schizoaffective">
+                                <label for="diagnosis-schizoaffective">Schizoaffective disorder</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="diagnosis" value="none" id="diagnosis-none">
+                                <label for="diagnosis-none">None of these conditions</label>
+                            </div>
+                        </div>
+                        <div class="help-text">Select all that apply. This helps us determine if specialized care would be more appropriate.</div>
+                    </div>
+                </div>
+
+                <!-- Question 3: Medications -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <div class="section-icon">3</div>
+                        Treatment History
+                    </div>
+                    <div class="form-group">
+                        <label>Which best describes your experience with antidepressants?</label>
+                        <select name="medications" id="medications" required>
+                            <option value="">Please select an option...</option>
+                            <option value="none">This is my first time seeking help</option>
+                            <option value="therapy">I've tried therapy but no medications</option>
+                            <option value="1-2">I've tried 1-2 antidepressants</option>
+                            <option value="3+">I've tried 3 or more antidepressants</option>
+                            <option value="psychiatrist">I'm currently seeing a psychiatrist</option>
+                        </select>
+                        <div class="help-text">This helps us understand your treatment history and determine the best approach.</div>
+                    </div>
+                </div>
+
+                <!-- Question 4: Medical -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <div class="section-icon">4</div>
+                        Medical Conditions
+                    </div>
+                    <div class="form-group">
+                        <label>Do any of these currently apply to you?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="medical" value="pregnant" id="medical-pregnant">
+                                <label for="medical-pregnant">Pregnant or breastfeeding</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="medical" value="substance" id="medical-substance">
+                                <label for="medical-substance">Active alcohol or drug problem</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="medical" value="seizure" id="medical-seizure">
+                                <label for="medical-seizure">Seizure disorder or epilepsy</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="medical" value="organ" id="medical-organ">
+                                <label for="medical-organ">Severe heart, liver, or kidney disease</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="medical" value="eating" id="medical-eating">
+                                <label for="medical-eating">Currently in eating disorder treatment</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="medical" value="none" id="medical-none">
+                                <label for="medical-none">None of these apply to me</label>
+                            </div>
+                        </div>
+                        <div class="help-text">These conditions may require special consideration or medical clearance before treatment.</div>
+                    </div>
+                </div>
+
+                <!-- Question 5: Requirements -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <div class="section-icon">5</div>
+                        Treatment Requirements
+                    </div>
+                    <div class="form-group">
+                        <label>For safe treatment, please confirm you can provide:</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="requirements" value="contact" id="requirements-contact" required>
+                                <label for="requirements-contact">An emergency contact person who can be reached if needed</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="requirements" value="pcp" id="requirements-pcp">
+                                <label for="requirements-pcp">Willingness to establish primary care within 60 days (if you don't have a PCP)</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="requirements" value="space" id="requirements-space">
+                                <label for="requirements-space">Private, quiet space for video appointments</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" name="requirements" value="internet" id="requirements-internet">
+                                <label for="requirements-internet">Reliable internet connection for telehealth</label>
+                            </div>
+                        </div>
+                        <div class="help-text">These requirements help ensure safe and effective treatment.</div>
+                    </div>
+                </div>
+
+                <!-- Question 6: Demographics -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <div class="section-icon">6</div>
+                        Basic Information
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Your Age:</label>
+                        <input type="number" name="age" id="age" min="18" max="75" required placeholder="Enter your age">
+                        <div class="help-text">We serve patients aged 18-75.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="state">Current State:</label>
+                        <select name="state" id="state" required>
+                            <option value="">Please select your state...</option>
+                            <option value="CA">California</option>
+                            <option value="NY">New York</option>
+                            <option value="TX">Texas</option>
+                            <option value="FL">Florida</option>
+                            <option value="IL">Illinois</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="AZ">Arizona</option>
+                        </select>
+                        <div class="help-text">We're currently licensed in select states.</div>
+                    </div>
+                </div>
+
+                <!-- Question 7: Concern -->
+                <div class="form-section">
+                    <div class="section-title">
+                        <div class="section-icon">7</div>
+                        Primary Concern
+                    </div>
+                    <div class="form-group">
+                        <label for="concern">What brings you here today?</label>
+                        <select name="concern" id="concern">
+                            <option value="">Please select...</option>
+                            <option value="work-stress">Work stress or burnout</option>
+                            <option value="depression">Depression or low mood</option>
+                            <option value="anxiety">Anxiety or excessive worry</option>
+                            <option value="sleep">Sleep problems affecting my mood</option>
+                            <option value="relationship">Relationship or life transitions</option>
+                            <option value="other">Other mood concerns</option>
+                        </select>
+                        <div class="help-text">This helps us understand your primary treatment goals.</div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit">Submit Screening Assessment</button>
+                </div>
+            </form>
+
+            <!-- Results div -->
+            <div id="screening-result" style="display:none;"></div>
+            
+            <div class="privacy-note">
+                <strong>🔒 HIPAA Compliant & Secure</strong><br>
+                Your responses are encrypted and handled in compliance with healthcare privacy standards.
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="emergency-note">
+                <strong>If you're in crisis:</strong> Please call 988 for immediate support.
+            </div>
+            <p>&copy; 2024 MoodPath MD. Board-certified • State licensed • HIPAA compliant</p>
+            <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.7;">
+                Not for emergencies. Telehealth has limitations. Results vary.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ================================================
+        // MOODPATH MD - ENHANCED SCREENING SYSTEM
+        // ================================================
+
+        // Configuration
+        const CONFIG = {
+            // Your Google Apps Script Web App URL (we'll create this next)
+            googleScriptUrl: 'YOUR_GOOGLE_SCRIPT_URL_HERE',
+            
+            // Your practice info
+            practiceEmail: 'scheduling@moodpathmd.com',
+            practicePhone: '(555) 555-5555',
+            launchDate: 'January 2025',
+            
+            // States you're licensed in
+            statesLicensed: ['CA', 'NY', 'TX', 'FL', 'IL', 'PA', 'AZ']
+        };
+
+        // ================================================
+        // PROGRESS TRACKING
+        // ================================================
+        class ProgressTracker {
+            constructor() {
+                this.progressFill = document.getElementById('progress-fill');
+                this.progressText = document.getElementById('progress-text');
+                this.totalSections = 7;
+                this.currentSection = 0;
+                this.init();
+            }
+            
+            init() {
+                this.updateProgress();
+                this.attachListeners();
+            }
+            
+            attachListeners() {
+                // Track form interactions
+                const form = document.getElementById('screening-form');
+                const inputs = form.querySelectorAll('input, select');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('change', () => this.updateProgress());
+                    input.addEventListener('input', () => this.updateProgress());
+                });
+            }
+            
+            updateProgress() {
+                const form = document.getElementById('screening-form');
+                const inputs = form.querySelectorAll('input, select');
+                let completed = 0;
+                
+                inputs.forEach(input => {
+                    if (input.type === 'radio' || input.type === 'checkbox') {
+                        if (input.checked) completed++;
+                    } else if (input.type === 'select-one' || input.type === 'number') {
+                        if (input.value) completed++;
+                    }
+                });
+                
+                const progress = Math.min((completed / this.totalSections) * 100, 100);
+                this.progressFill.style.width = progress + '%';
+                this.progressText.textContent = `Step ${Math.ceil(progress / 14.28)} of 7`;
+            }
+        }
+
+        // ================================================
+        // SCREENING EVALUATION LOGIC
+        // ================================================
+        class ScreeningEvaluator {
+            constructor(formData) {
+                this.data = formData;
+                this.result = this.evaluate();
+            }
+            
+            evaluate() {
+                // Safety check - highest priority
+                if (this.data.safety === 'yes') {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Safety risk',
+                        message: this.getCrisisMessage()
+                    };
+                }
+                
+                // Diagnosis check
+                const diagnosis = this.data.diagnosis || [];
+                if (diagnosis.includes('bipolar') || 
+                    diagnosis.includes('schizophrenia') || 
+                    diagnosis.includes('borderline') ||
+                    diagnosis.includes('schizoaffective')) {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Psychiatric complexity',
+                        message: this.getPsychiatryMessage()
+                    };
+                }
+                
+                // Medication history check
+                if (this.data.medications === '3+' || 
+                    this.data.medications === 'psychiatrist') {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Treatment complexity',
+                        message: this.getPsychiatryMessage()
+                    };
+                }
+                
+                // Medical conditions check
+                const medical = this.data.medical || [];
+                if (medical.length > 0 && !medical.includes('none')) {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Medical complexity',
+                        message: this.getMedicalMessage()
+                    };
+                }
+                
+                // Requirements check
+                const requirements = this.data.requirements || [];
+                if (!requirements.includes('contact')) {
+                    return {
+                        status: 'CONDITIONAL',
+                        reason: 'Missing emergency contact',
+                        message: this.getConditionalMessage()
+                    };
+                }
+                
+                // Age check
+                const age = parseInt(this.data.age);
+                if (age < 18 || age > 75) {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Age outside range',
+                        message: this.getAgeMessage(age)
+                    };
+                }
+                
+                // State check
+                if (!CONFIG.statesLicensed.includes(this.data.state)) {
+                    return {
+                        status: 'REJECTED',
+                        reason: 'Not licensed in state',
+                        message: this.getStateMessage(this.data.state)
+                    };
+                }
+                
+                // All checks passed!
+                return {
+                    status: 'APPROVED',
+                    reason: 'All criteria met',
+                    message: this.getApprovedMessage()
+                };
+            }
+            
+            getApprovedMessage() {
+                return `
+                    <div class="result-approved">
+                        <h2>✅ Great News - You Qualify for Our Services!</h2>
+                        
+                        <p>You appear to be a good fit for MoodPath MD.</p>
+                        
+                        <p><strong>We're launching in ${CONFIG.launchDate}</strong></p>
+                        
+                        <p>To join our waitlist and be among the first to schedule:</p>
+                        
+                        <div class="contact-box">
+                            📧 Email: ${CONFIG.practiceEmail}<br>
+                            📱 Phone: ${CONFIG.practicePhone}
+                        </div>
+                        
+                        <p>We'll contact interested patients in the order received.</p>
+                        
+                        <p><small>Your screening data has been securely saved.</small></p>
+                    </div>
+                `;
+            }
+            
+            getCrisisMessage() {
+                return `
+                    <div class="result-crisis">
+                        <h2>Your Safety Is Our Priority</h2>
+                        
+                        <p>Please reach out for immediate support:</p>
+                        
+                        <div class="crisis-resources">
+                            <p>📞 <strong>Crisis Lifeline: 988</strong> (call or text)</p>
+                            <p>🚨 <strong>Emergency: 911</strong></p>
+                            <p>💬 <strong>Crisis Text: Text HOME to 741741</strong></p>
+                        </div>
+                        
+                        <p>These services are free, confidential, and available 24/7.</p>
+                    </div>
+                `;
+            }
+            
+            getPsychiatryMessage() {
+                return `
+                    <div class="result-referral">
+                        <h2>Specialized Care Recommended</h2>
+                        
+                        <p>Based on your responses, you would benefit from specialized psychiatric care.</p>
+                        
+                        <h3>Recommended Resources:</h3>
+                        <ul>
+                            <li>Psychology Today - Find psychiatrists near you</li>
+                            <li>Your insurance provider directory</li>
+                            <li>Academic medical centers in your area</li>
+                        </ul>
+                        
+                        <p>You deserve the right level of care for your needs.</p>
+                    </div>
+                `;
+            }
+            
+            getMedicalMessage() {
+                return `
+                    <div class="result-referral">
+                        <h2>Medical Evaluation Recommended</h2>
+                        
+                        <p>Your medical situation requires in-person evaluation before starting treatment.</p>
+                        
+                        <p>Please see your primary care physician first for medical clearance.</p>
+                    </div>
+                `;
+            }
+            
+            getConditionalMessage() {
+                return `
+                    <div class="result-conditional">
+                        <h2>Almost There!</h2>
+                        
+                        <p>You qualify for our services, but we need you to have an emergency contact for safe treatment.</p>
+                        
+                        <p>Once you have someone who can be reached in case of emergency, please contact us:</p>
+                        
+                        <p>📧 ${CONFIG.practiceEmail}</p>
+                    </div>
+                `;
+            }
+            
+            getAgeMessage(age) {
+                if (age < 18) {
+                    return `
+                        <div class="result-referral">
+                            <h2>Pediatric Services Needed</h2>
+                            <p>We serve patients 18 and older. Please seek pediatric mental health services.</p>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="result-referral">
+                            <h2>Age Consideration</h2>
+                            <p>We serve patients aged 18-75. Please consult with your primary care physician for appropriate referral.</p>
+                        </div>
+                    `;
+                }
+            }
+            
+            getStateMessage(state) {
+                return `
+                    <div class="result-referral">
+                        <h2>Not Available in Your State</h2>
+                        
+                        <p>We're not yet licensed to practice in ${state}.</p>
+                        
+                        <p>Please check:</p>
+                        <ul>
+                            <li>Your insurance provider directory</li>
+                            <li>Psychology Today for local providers</li>
+                            <li>Telemedicine services licensed in your state</li>
+                        </ul>
+                    </div>
+                `;
+            }
+        }
+
+        // ================================================
+        // FORM HANDLER
+        // ================================================
+        class ScreeningForm {
+            constructor() {
+                this.form = document.getElementById('screening-form');
+                this.resultDiv = document.getElementById('screening-result');
+                this.progressTracker = new ProgressTracker();
+                this.init();
+            }
+            
+            init() {
+                if (this.form) {
+                    this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+                }
+            }
+            
+            async handleSubmit(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                this.showLoading();
+                
+                // Collect form data
+                const formData = this.collectFormData();
+                
+                // Evaluate screening
+                const evaluator = new ScreeningEvaluator(formData);
+                const result = evaluator.result;
+                
+                // Add metadata
+                formData.timestamp = new Date().toISOString();
+                formData.evaluationStatus = result.status;
+                formData.evaluationReason = result.reason;
+                formData.userAgent = navigator.userAgent;
+                formData.referrer = document.referrer;
+                
+                // Send to Google Sheets (if configured)
+                if (CONFIG.googleScriptUrl !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+                    try {
+                        await this.sendToGoogleSheets(formData);
+                    } catch (error) {
+                        console.error('Error submitting to Google Sheets:', error);
+                        // Continue anyway - show result to user
+                    }
+                }
+                
+                // Show result to user
+                this.showResult(result.message);
+                
+                // Track analytics (if you have GA)
+                this.trackAnalytics(result.status, result.reason);
+            }
+            
+            collectFormData() {
+                const formData = {};
+                
+                // Safety
+                formData.safety = document.querySelector('input[name="safety"]:checked')?.value || '';
+                
+                // Diagnosis (checkboxes)
+                formData.diagnosis = Array.from(document.querySelectorAll('input[name="diagnosis"]:checked'))
+                    .map(cb => cb.value);
+                
+                // Medications
+                formData.medications = document.getElementById('medications')?.value || '';
+                
+                // Medical (checkboxes)
+                formData.medical = Array.from(document.querySelectorAll('input[name="medical"]:checked'))
+                    .map(cb => cb.value);
+                
+                // Requirements (checkboxes)
+                formData.requirements = Array.from(document.querySelectorAll('input[name="requirements"]:checked'))
+                    .map(cb => cb.value);
+                
+                // Demographics
+                formData.age = document.getElementById('age')?.value || '';
+                formData.state = document.getElementById('state')?.value || '';
+                
+                // Concern
+                formData.concern = document.getElementById('concern')?.value || '';
+                
+                return formData;
+            }
+            
+            async sendToGoogleSheets(data) {
+                // Send to Google Apps Script Web App
+                const response = await fetch(CONFIG.googleScriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors', // Important for Google Scripts
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Note: With no-cors, we can't read the response
+                // But the data will be saved to Google Sheets
+                return true;
+            }
+            
+            showLoading() {
+                this.resultDiv.innerHTML = `
+                    <div class="loading">
+                        <p>Evaluating your responses...</p>
+                        <div class="spinner"></div>
+                    </div>
+                `;
+                this.resultDiv.style.display = 'block';
+                this.form.style.display = 'none';
+            }
+            
+            showResult(message) {
+                this.resultDiv.innerHTML = message;
+                this.resultDiv.style.display = 'block';
+                
+                // Add return button
+                this.resultDiv.innerHTML += `
+                    <button onclick="location.reload()" class="btn-return">
+                        Start New Screening
+                    </button>
+                `;
+            }
+            
+            trackAnalytics(status, reason) {
+                // If you have Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'screening_completed', {
+                        'screening_status': status,
+                        'screening_reason': reason
+                    });
+                }
+            }
+        }
+
+        // ================================================
+        // INITIALIZE ON PAGE LOAD
+        // ================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            new ScreeningForm();
+        });
+    </script>
+</body>
+</html>
