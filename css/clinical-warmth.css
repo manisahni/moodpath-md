@@ -135,6 +135,8 @@ p {
     list-style: none;
     gap: 2.5rem;
     align-items: center;
+    position: relative;
+    z-index: 1001;
 }
 
 .nav-menu a {
@@ -143,6 +145,8 @@ p {
     font-weight: 500;
     font-size: 0.9375rem;
     transition: color 0.2s;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .nav-menu a:hover {

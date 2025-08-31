@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - MoodPath MD</title>
+    <link rel="stylesheet" href="css/clinical-warmth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        .hero {
+            background: var(--gradient-subtle);
+            text-align: center;
+            padding: 6rem 0;
+        }
+        
+        .hero h1 {
+            color: var(--ocean-blue);
+            margin-bottom: 1rem;
+            font-size: 3rem;
+        }
+        
+        .hero .subtitle {
+            color: var(--warm-gray);
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .approach-section {
+            padding: 6rem 0;
+        }
+        
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .approach-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(44, 95, 124, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .approach-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .approach-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+        
+        .approach-card h3 {
+            color: var(--ocean-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .approach-card p {
+            color: var(--warm-gray);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .values-section {
+            background: var(--gradient-subtle);
+            padding: 6rem 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .value-card h3 {
+            color: var(--ocean-blue);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .value-card p {
+            color: var(--warm-gray);
+            line-height: 1.7;
+        }
+        
+        .cta-section {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-section .btn {
+            background: white;
+            color: var(--ocean-blue);
+            font-size: 1.125rem;
+            padding: 18px 36px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-section .btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header h2 {
+            color: var(--ocean-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--warm-gray);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .approach-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .approach-card,
+            .value-card {
+                padding: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <svg width="36" height="36" viewBox="0 0 40 40">
+                        <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F7C" stroke-width="1.5"/>
+                        <path d="M20 10 Q25 20, 20 30 Q15 20, 20 10" fill="#7BA098" opacity="0.3"/>
+                        <circle cx="20" cy="20" r="3" fill="#2C5F7C"/>
+                    </svg>
+                    <span class="logo-text">MoodPath MD</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="screening.html" class="btn btn-primary">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>About MoodPath MD</h1>
+                <p class="subtitle">A modern approach to mental health care that combines medical expertise with personalized treatment plans</p>
+            </div>
+        </section>
+
+        <section class="approach-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why We're Different</h2>
+                    <p>Our internist-led approach to mental health care considers the whole person, examining how physical health, medications, and lifestyle factors impact your mood and anxiety.</p>
+                </div>
+                
+                <div class="approach-grid">
+                    <div class="approach-card">
+                        <h3>Comprehensive Assessment</h3>
+                        <p>We rule out thyroid disorders, vitamin deficiencies, and other medical conditions that can significantly impact your mental health and mood.</p>
+                    </div>
+                    
+                    <div class="approach-card">
+                        <h3>Medication Expertise</h3>
+                        <p>Our deep understanding of drug interactions ensures safe and effective treatment across all your medications and medical conditions.</p>
+                    </div>
+                    
+                    <div class="approach-card">
+                        <h3>Whole-Person Care</h3>
+                        <p>We address sleep, nutrition, exercise, and lifestyle factors that play crucial roles in your mental health and overall well-being.</p>
+                    </div>
+                    
+                    <div class="approach-card">
+                        <h3>Medical Monitoring</h3>
+                        <p>We carefully manage side effects and monitor your metabolic health throughout treatment to ensure optimal outcomes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Treatment Philosophy</h2>
+                    <p>We believe in evidence-based, personalized care that empowers you to take control of your mental health journey.</p>
+                </div>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Evidence-Based</h3>
+                        <p>All treatments are grounded in the latest research and clinical guidelines, ensuring you receive care that's proven to work effectively.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h3>Personalized</h3>
+                        <p>Advanced testing and individual assessment guide treatment selection, reducing trial-and-error and improving your outcomes.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h3>Measurable</h3>
+                        <p>Regular assessments track your progress objectively, so you can see your improvement over time and celebrate your successes.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h3>Collaborative</h3>
+                        <p>You're an active partner in your treatment decisions. We work together to find what works best for your unique needs and goals.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Take our 2-minute assessment to see if our approach is right for you and begin your path to better mental health.</p>
+                <a href="screening.html" class="btn">
+                    Start Your Assessment
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="emergency-note">
+                <strong>If you're in crisis:</strong> Please call 988 for immediate support.
+            </div>
+            <p>&copy; 2024 MoodPath MD. Board-certified • State licensed • HIPAA compliant</p>
+            <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.7;">
+                Not for emergencies. Telehealth has limitations. Results vary.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

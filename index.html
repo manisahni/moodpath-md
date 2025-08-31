@@ -3,225 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoodPath MD - Personalized Mood Care, From Anywhere</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>MoodPath MD - Premium Mental Health Care That Truly Sees You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/clinical-warmth.css">
+    <style>
+        /* Additional custom styles for homepage */
+        .hero {
+            background: linear-gradient(135deg, var(--cream) 0%, rgba(123, 160, 152, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%232C5F7C" opacity="0.03"/><circle cx="75" cy="75" r="1" fill="%237BA098" opacity="0.03"/><circle cx="50" cy="10" r="0.5" fill="%232C5F7C" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        .hero .btn {
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .approach-section {
+            background: white;
+            position: relative;
+        }
+        
+        .approach-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--ocean-blue-muted), transparent);
+        }
+        
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .approach-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(44, 95, 124, 0.06);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .approach-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ocean-blue), var(--sage));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .approach-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .approach-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .approach-card h3 {
+            color: var(--ocean-blue);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .approach-card p {
+            color: var(--warm-gray);
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        .how-it-works {
+            background: var(--gradient-subtle);
+            position: relative;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--ocean-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 auto 1rem;
+            font-size: 1.125rem;
+        }
+        
+        .step-card h3 {
+            color: var(--ocean-blue);
+            margin-bottom: 0.75rem;
+        }
+        
+        .step-card p {
+            color: var(--warm-gray);
+            margin: 0;
+        }
+        
+        .faq-section {
+            background: white;
+        }
+        
+        .faq-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(44, 95, 124, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-1px);
+        }
+        
+        .faq-item h3 {
+            color: var(--ocean-blue);
+            margin-bottom: 0.75rem;
+            font-size: 1.125rem;
+        }
+        
+        .faq-item p {
+            color: var(--warm-gray);
+            margin: 0;
+            line-height: 1.7;
+        }
+        
+        .cta-section {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+        }
+        
+        .cta-section .btn {
+            background: white;
+            color: var(--ocean-blue);
+            font-size: 1.125rem;
+            padding: 16px 32px;
+        }
+        
+        .cta-section .btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: var(--charcoal);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .emergency-note {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #FCA5A5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .approach-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .approach-card,
+            .step-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <div class="logo">
-                        <svg width="35" height="35" viewBox="0 0 40 40">
-                            <circle cx="20" cy="20" r="15" fill="none" stroke="#87a878" stroke-width="1" opacity="0.5"/>
-                            <circle cx="20" cy="20" r="3" fill="#87a878" opacity="0.7"/>
-                        </svg>
-                        <span class="logo-text">MoodPath MD</span>
-                    </div>
-                    <ul class="nav-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="pages/about.html">About</a></li>
-                        <li><a href="pages/services.html">Services</a></li>
-                        <li><a href="pages/faq.html">FAQ</a></li>
-                        <li><a href="pages/contact.html">Contact</a></li>
-                        <li><a href="pages/schedule.html" class="cta-button">Let's Talk</a></li>
-                    </ul>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <svg width="36" height="36" viewBox="0 0 40 40">
+                        <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F7C" stroke-width="1.5"/>
+                        <path d="M20 10 Q25 20, 20 30 Q15 20, 20 10" fill="#7BA098" opacity="0.3"/>
+                        <circle cx="20" cy="20" r="3" fill="#2C5F7C"/>
+                    </svg>
+                    <span class="logo-text">MoodPath MD</span>
                 </div>
+                <ul class="nav-menu">
+                    <li><a href="#approach">Our Approach</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="screening.html" class="btn btn-primary">Get Started</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>A Quieter Approach to Mental Wellness</h1>
-                    <p class="subtitle">Thoughtful care that considers your whole story, guided by Dr. Sahni's integrative medical perspective</p>
-                    <button class="primary-btn" onclick="location.href='forms/assessment.html'">Begin With a Simple Check-In</button>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <span class="stat-number">Gentle</span>
-                            <span class="stat-label">Evidence-based approach</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">Holistic</span>
-                            <span class="stat-label">Mind-body perspective</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">Personal</span>
-                            <span class="stat-label">Your unique journey</span>
-                        </div>
-                    </div>
-                </div>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>You deserve care that truly sees you.</h1>
+                <p class="subtitle">
+                    Thoughtful online support for depression and anxiety that considers your whole health story — 
+                    because sometimes the answer isn't just in your mind.
+                </p>
+                <a href="screening.html" class="btn btn-primary">
+                    See if this feels right
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="how-it-works">
-            <div class="container">
-                <h2>How We Work Together</h2>
-                <div class="steps-grid">
-                    <div class="step">
-                        <div class="step-icon">📋</div>
-                        <h3>1. Understanding</h3>
-                        <p>We begin by listening to your story and understanding where you are</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-icon">👨‍⚕️</div>
-                        <h3>2. Connection</h3>
-                        <p>A compassionate conversation with Dr. Sahni in a comfortable virtual space</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-icon">🧬</div>
-                        <h3>3. Gentle Guidance</h3>
-                        <p>Personalized recommendations that honor your preferences and biology</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-icon">📊</div>
-                        <h3>4. Walking Together</h3>
-                        <p>Regular check-ins to support your gradual journey toward wellness</p>
-                    </div>
+    <section id="approach" class="approach-section">
+        <div class="container">
+            <h2>What Makes Us Different</h2>
+            <p class="lead" style="text-align: center; max-width: 640px; margin: 0 auto 3rem;">
+                Most online platforms treat symptoms. We look deeper.
+            </p>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <h3>Medical Training That Matters</h3>
+                    <p>Your care comes from a medical doctor who understands how your body affects your mood — thyroid, sleep, hormones, medications.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Your DNA Holds Answers</h3>
+                    <p>Why do some people respond beautifully to certain antidepressants while others feel nothing? Your genetic makeup can reveal which medications your body processes best.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Time to Listen</h3>
+                    <p>90-minute consultations allow us to understand your complete story — not just your symptoms, but your life, your health, and your goals.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="outcomes">
-            <div class="container">
-                <h2>The Journey of Healing</h2>
-                <div class="outcomes-content">
-                    <div class="chart-container">
-                        <canvas id="phq9-chart"></canvas>
-                        <p class="chart-caption">Average patient PHQ-9 score reduction over 12 weeks</p>
-                    </div>
-                    <div class="outcomes-text">
-                        <h3>What You Can Expect</h3>
-                        <ul class="benefits-list">
-                            <li>• Gradual, sustainable improvement</li>
-                            <li>• A therapeutic relationship built on trust</li>
-                            <li>• Treatment that fits your life</li>
-                            <li>• Space to process at your own pace</li>
-                            <li>• Options informed by science and wisdom</li>
-                        </ul>
-                        <button class="secondary-btn" onclick="location.href='pages/services.html'">Explore Our Approach</button>
-                    </div>
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Start Simply</h3>
+                    <p>A brief questionnaire to understand where you are and if we're the right fit for your needs.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Connect Easily</h3>
+                    <p>Book a time that works, meet from wherever you feel comfortable. No commutes, no waiting rooms.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Be Understood</h3>
+                    <p>Your board-certified medical doctor takes time to see your full picture and create a personalized plan.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="genomics">
-            <div class="container">
-                <h2>Understanding Your Unique Biology</h2>
-                <div class="genomics-grid">
-                    <div class="genomics-content">
-                        <h3>When Medicine Meets You Where You Are</h3>
-                        <p>Sometimes understanding your genetic makeup can illuminate the path forward:</p>
-                        <ul>
-                            <li>Discover how your body processes medications</li>
-                            <li>Reduce uncertainty in treatment choices</li>
-                            <li>Honor your body's unique wisdom</li>
-                            <li>Make informed decisions together</li>
-                        </ul>
-                        <div class="price-tag" style="background: var(--soft-blue); margin-top: 2rem;">
-                            <span class="price" style="font-size: 1.2rem; font-weight: 400;">Optional genomic insight</span>
-                            <span class="price-label">Available when you're ready</span>
-                        </div>
-                    </div>
-                    <div class="genomics-visual">
-                        <svg class="dna-icon" viewBox="0 0 200 300">
-                            <path d="M50 50 Q100 100, 150 50 T150 150 Q100 200, 50 150 T50 250" 
-                                  stroke="#00B4D8" stroke-width="4" fill="none"/>
-                            <path d="M150 50 Q100 100, 50 50 T50 150 Q100 200, 150 150 T150 250" 
-                                  stroke="#2A9D8F" stroke-width="4" fill="none"/>
-                            <circle cx="50" cy="50" r="8" fill="#E63946"/>
-                            <circle cx="150" cy="50" r="8" fill="#E63946"/>
-                            <circle cx="50" cy="150" r="8" fill="#E63946"/>
-                            <circle cx="150" cy="150" r="8" fill="#E63946"/>
-                            <circle cx="50" cy="250" r="8" fill="#E63946"/>
-                            <circle cx="150" cy="250" r="8" fill="#E63946"/>
-                        </svg>
-                    </div>
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2>Common Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Isn't depression usually treated by psychiatrists?</h3>
+                    <p>Mild to moderate depression is most often first evaluated and managed by internists and primary care doctors. That's the standard of care. We expand on this foundation with more time, targeted labs, and genetic testing.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do I need a primary care provider?</h3>
+                    <p>Yes, we require patients to have a PCP for comprehensive care coordination and medical emergencies. We work collaboratively with your PCP to ensure you receive the best possible care.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How is this different from traditional therapy?</h3>
+                    <p>We provide medical treatment for depression and anxiety, including medication management and genetic testing. While therapy focuses on talk therapy, we focus on the medical aspects of mental health care.</p>
                 </div>
             </div>
-        </section>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="faq.html" class="btn btn-secondary">View All FAQs →</a>
+            </div>
+        </div>
+    </section>
 
-        <section class="testimonials">
-            <div class="container">
-                <h2>Voices From Our Community</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial">
-                        <div class="stars">★★★★★</div>
-                        <p>"Dr. Sahni listened—really listened—to my whole story. For the first time, I felt seen as a complete person, not just symptoms."</p>
-                        <cite>- Sarah M.</cite>
-                    </div>
-                    <div class="testimonial">
-                        <div class="stars">★★★★★</div>
-                        <p>"The gentle pace of treatment allowed me to heal without feeling rushed. Small steps led to meaningful change."</p>
-                        <cite>- Michael R.</cite>
-                    </div>
-                    <div class="testimonial">
-                        <div class="stars">★★★★★</div>
-                        <p>"Having a doctor who understands both the medical and emotional aspects of depression made all the difference."</p>
-                        <cite>- Jennifer L.</cite>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>When You're Ready, We're Here</h2>
-                    <p>There's no rush. Begin with a simple self-reflection when it feels right.</p>
-                    <button class="primary-btn large" onclick="location.href='forms/assessment.html'">Quiet Self-Assessment</button>
-                    <p class="disclaimer" style="opacity: 0.8;">If you're in crisis, please reach out for immediate support at 988.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to feel better?</h2>
+            <p>Take our 2-minute fit check to see if MoodPath MD is right for you.</p>
+            <a href="screening.html" class="btn">
+                Start Your Journey
+            </a>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h4>MoodPath MD</h4>
-                    <p>Internist-led telehealth for depression and anxiety</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">📘</a>
-                        <a href="#" aria-label="Twitter">🐦</a>
-                        <a href="#" aria-label="LinkedIn">💼</a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="pages/about.html">About Dr. Sahni</a></li>
-                        <li><a href="pages/services.html">Services & Pricing</a></li>
-                        <li><a href="pages/faq.html">FAQ</a></li>
-                        <li><a href="pages/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Patient Resources</h4>
-                    <ul>
-                        <li><a href="forms/assessment.html">PHQ-9 Assessment</a></li>
-                        <li><a href="pages/schedule.html">Book Consultation</a></li>
-                        <li><a href="#">Patient Portal</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Emergency Resources</h4>
-                    <p class="emergency">Crisis Hotline: <strong>988</strong></p>
-                    <p>Available 24/7 for mental health emergencies</p>
-                </div>
+            <div class="emergency-note">
+                <strong>If you're in crisis:</strong> Please call 988 for immediate support.
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 MoodPath MD. All rights reserved. | HIPAA Compliant</p>
-            </div>
+            <p>&copy; 2024 MoodPath MD. Board-certified • State licensed • HIPAA compliant</p>
+            <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.7;">
+                Not for emergencies. Telehealth has limitations. Results vary.
+            </p>
         </div>
     </footer>
-
-    <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
